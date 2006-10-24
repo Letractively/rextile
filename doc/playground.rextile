@@ -1,0 +1,38 @@
+h1. RedCloth Features
+
+
+	h3. Bulleted List
+
+	* One
+	* Two
+	* Three
+	
+	h3. Spaced Bulleted List
+
+	* This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.
+
+	* This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.
+
+	h3. Code Blocks
+
+A small code block:
+
+	Here is the code,
+	on two lines.
+	
+	Another code block.
+	
+Now for some more text.
+
+<pre><code>	A code block with empty lines.
+	
+	Here we go.
+</code></pre>
+
+Is is normal with HTML, we have to put the first line right behind the opening @pre@ and @code@ tags. What a totally ridiculous convention.
+
+	h3. Spans
+	
+This is some text where %(when)a part is smaller%.
+
+	

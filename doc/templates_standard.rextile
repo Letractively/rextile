@@ -1,0 +1,115 @@
+h1. Standard Template
+
+The standard template comes with Rextile. It is located in @templates/standard@ in the folder where you installed Rextile. It defines specialized @_wrapper.rextinc@ and @_wrapper.xhtml@ files, and a number of auxiliary files which make site administration easier. The standard template is a good example of how to use Rextile.
+
+<%= toc %>
+
+
+h2. Site Structure
+
+To use the standard template, your site will typically contain the following files:
+
+| @_site.rb@					| site root, indicates template to use				|
+| @_settings.rb@				| per folder settings	(@@crumbs@, for example)		|
+| @style.css@					| style sheet									|
+| @index.rextile@				| index of the root folder						|
+| @other.rextile@				| another document in the root folder			|
+| @articles/_settings.rb@		| per folder settings of a subfolder				|
+| @articles/index.rextile@		| index of a subfolder							|
+| @articles/article.rextile@		| another document in a subfolder				|
+
+h3. _site.rb
+
+References the standard template:
+
+	@template_path = '/path/to/rextile/templates/standard'
+
+	
+h3. _settings.rb
+
+Overrides per-folder settings, see @templates/standard/_init.rb@ for an overview. You will mostly be adding to @@crumbs@ here to define the "breadcrumbs navigation":#crumbs captions:
+
+	@crumbs += ['Rextile Docs'] 
+
+	
+h3. style.css
+
+Defines the styling of the site. Plain HTML is not particulary beautiful, so you will want to do this. To reference the style sheet, add something like the following to the site root's @_settings.rb@:
+
+	@head_nodes += ['<link rel="stylesheet" type="text/css" href="' + root_path + 'style.css" />']
+
+	
+h3. Custom Header and Footer
+
+To override header and footer elements, you can add your own versions of
+
+* @_header.xhtml@ (default is "breadcrumbs navigation":#crumbs)
+* @_footer.xthml@ (default is file modification date)
+
+This is much better than overriding @_wrapper.xhtml@, because the latter contains quite a bit of code.
+
+
+
+h2. Document and Page Title
+
+A rextile document ususally begins with an @h1@ title, like so:
+
+<pre><code
+>h1. Example Document
+
+Here goes...
+</code></pre>
+
+@_wrapper.xhtml@ uses this title for the @<head><title>@ text, unless you override it by setting @@page_title@ in a script block, as in @<%% @page_title = 'My Title' %>@.
+
+
+h2. <a name="crumbs">Breadcrumbs Navigation</a>
+
+@_wrapper.xhtml@ automatically adds breadcrumbs navigation to the header of every page (unless you change this by overriding @_header.xhtml@). The crumbs always point back to @index.htm@ of the current folder (unless the current page is @index.htm@), and then to all of the @index.htm@ of the outer folders. The captions used for the crumbs are added to the array @@crumbs@ in @_settings.rb@ for each folder.
+
+The breadcrumbs are built using the method @breadcrumbs()@ defined in @_globals.rb@ in the standard template.
+
+
+h2. Table Of Contents
+
+Rextile has a simple command for constructing a TOC(Table Of Contents) from the headings within a page:
+
+	<%%= toc %>
+
+The table at the top of this page was built like that. Note that
+
+* it does not include the headings above it, and 
+* existing anchors are reused, while
+* headings without anchors get a generated one.
+
+There is a special form, @<%%= toc from, to %>@, which allows you to specify the heading level range to include.
+
+You can also build local TOCs with this. @<%%= toc 4, 5 %>@ right here will give you:
+
+<%= toc 4, 5 %>
+
+h4. First
+
+This is just some place-holder text to show the effect.
+
+h5. One
+
+Some text.
+
+h5. Two
+
+More text.
+
+h4. Second
+
+Final text here.
+
+
+h2. Adding Custom Scripts
+
+You may also want to add your own script functions for use in "script blocks":scripting.htm. I suggest you put the following into your root folder's @_settings.rb@ file:
+
+	require '_funcs.rb'
+	
+and then add your functions to @_funcs.rb@.
+

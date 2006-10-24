@@ -1,0 +1,10 @@
+<%
+require File.join( template_path, '_globals.rb' )
+
+# Eval to ensure were in the proper environment
+eval readClosestFile( '_init.rb' )
+eval readPrependedFiles( '_settings.rb' )  
+%>
+
+CONTENT GOES HERE
+

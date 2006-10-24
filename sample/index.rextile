@@ -1,0 +1,82 @@
+h1. Rextile Sample
+
+This is a minimalistic sample of what a plain, unstyled site constructed with "Rextile":rx using the default template looks like.
+
+
+h2. Table of Contents
+
+Rextile has a simple command for constructing a TOC from the headings within a page: @<%%= toc %>@:
+
+<%= toc %>
+
+Note how
+
+* it does not include the headings above it, and 
+* existing anchors are reused, while
+* headings without anchors get a generated one.
+
+
+h2. Header and Footer
+
+h3. Breadcrumbs in Header
+
+Rextile automatically builds a so-called _breadcrumbs_ navigation atop pages. You can "see this in action here":more.htm. You can turn this off or customize it.
+
+h3. Modification Date in Footer
+
+Rextile automatically adds a footer with the file's modification date. You can turn this off or customize it. Note that this reflects the modification date of the source file, not the generated XHTML file.
+
+
+h2. <a name="scripts">Scripts (anchor is "scripts")</a>
+
+We can do plain Ruby in scripts:
+
+<pre><code
+>This page was last modified on <%%= File.new( rextile_name ).mtime.getlocal.strftime( '%b %d, %Y' ) %>.
+</code></pre>
+
+This page was last modified on <%= File.new( rextile_name ).mtime.getlocal.strftime( '%b %d, %Y' ) %>.
+
+
+h2. Textile Features
+
+Textile is about the simple use of common HTML elements. I am giving just a few examples here. There's more over at the "Textile site":tex.
+
+
+h3. Bulleted List
+
+* One
+* Two
+* Three
+
+	
+h3. Spaced Bulleted List
+
+* This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.
+
+* This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.
+
+
+h3. Code Blocks
+
+A small code block:
+
+	Here is the code,
+	on two lines.
+	
+	Another code block.
+	
+The above example puts the two blocks into separate @pre@ tags. If you don't want that, use @pre@ explicitly:
+
+<pre><code
+>A code block with empty lines.
+	
+Here we go.
+</code></pre>
+
+As is normal with HTML, we have to put the first line right behind the @>@ of the @code@ tag to avoid a spurious blank line. What a nuisance.
+
+
+
+[rx]http://arrenbrecht.ch/rextile
+[tex]http://www.textism.com/tools/textile/

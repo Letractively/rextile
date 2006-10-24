@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+	<title>Rextile Sample</title>
+    <style type="text/css" media="screen">
+		
+    </style>
+	
+</head>
+
+<body>
+    <div class="all">
+		<div class="header">
+		
+<div class="crumbs">
+	
+</div>
+
+
+		</div>
+        <div class="content">
+
+<h1>Rextile Sample</h1>
+
+
+	<p>This is a minimalistic sample of what a plain, unstyled site constructed with <a href="http://arrenbrecht.ch/rextile">Rextile</a> using the default template looks like.</p>
+
+
+	<h2>Table of Contents</h2>
+
+
+	<p>Rextile has a simple command for constructing a <span class="caps">TOC</span> from the headings within a page: <code>&lt;%= toc %&gt;</code>:</p>
+
+
+<div class="toc"><ul class="toc toc1"><li class="withitems"><a href="#pagetoc__1">Header and Footer</a><ul class="toc toc2"><li><a href="#pagetoc__1_1">Breadcrumbs in Header</a></li><li><a href="#pagetoc__1_2">Modification Date in Footer</a></li></ul></li><li><a href="#scripts">Scripts (anchor is &#8220;scripts&#8221;)</a></li><li class="withitems"><a href="#pagetoc__3">Textile Features</a><ul class="toc toc2"><li><a href="#pagetoc__3_1">Bulleted List</a></li><li><a href="#pagetoc__3_2">Spaced Bulleted List</a></li><li><a href="#pagetoc__3_3">Code Blocks</a></li></ul></li></ul></div>
+
+	<p>Note how</p>
+
+
+	<ul>
+	<li>it does not include the headings above it, and </li>
+		<li>existing anchors are reused, while</li>
+		<li>headings without anchors get a generated one.</li>
+	</ul>
+
+
+	<h2><a name="pagetoc__1">Header and Footer</a></h2>
+
+
+	<h3><a name="pagetoc__1_1">Breadcrumbs in Header</a></h3>
+
+
+	<p>Rextile automatically builds a so-called <em>breadcrumbs</em> navigation atop pages. You can <a href="more.htm">see this in action here</a>. You can turn this off or customize it.</p>
+
+
+	<h3><a name="pagetoc__1_2">Modification Date in Footer</a></h3>
+
+
+	<p>Rextile automatically adds a footer with the file&#8217;s modification date. You can turn this off or customize it. Note that this reflects the modification date of the source file, not the generated <span class="caps">XHTML</span> file.</p>
+
+
+	<h2><a name="scripts">Scripts (anchor is &#8220;scripts&#8221;)</a></h2>
+
+
+	<p>We can do plain Ruby in scripts:</p>
+
+
+<pre><code>This page was last modified on &lt;%= File.new( rextile_name ).mtime.getlocal.strftime( '%b %d, %Y' ) %&gt;.
+</code></pre>
+
+	<p>This page was last modified on Oct 20, 2006.</p>
+
+
+	<h2><a name="pagetoc__3">Textile Features</a></h2>
+
+
+	<p>Textile is about the simple use of common <span class="caps">HTML</span> elements. I am giving just a few examples here. There&#8217;s more over at the <a href="http://www.textism.com/tools/textile/">Textile site</a>.</p>
+
+
+	<h3><a name="pagetoc__3_1">Bulleted List</a></h3>
+
+
+	<ul>
+	<li>One</li>
+		<li>Two</li>
+		<li>Three</li>
+	</ul>
+
+
+	<h3><a name="pagetoc__3_2">Spaced Bulleted List</a></h3>
+
+
+	<ul>
+	<li>This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.</li>
+	</ul>
+
+
+	<ul>
+	<li>This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.</li>
+	</ul>
+
+
+	<h3><a name="pagetoc__3_3">Code Blocks</a></h3>
+
+
+	<p>A small code block:</p>
+
+
+	<pre><code>Here is the code,
+on two lines.</code></pre>
+
+
+	<pre><code>Another code block.</code></pre>
+
+
+	<p>The above example puts the two blocks into separate <code>pre</code> tags. If you don&#8217;t want that, use <code>pre</code> explicitly:</p>
+
+
+<pre><code>A code block with empty lines.
+
+Here we go.
+</code></pre>
+
+	<p>As is normal with <span class="caps">HTML</span>, we have to put the first line right behind the <code>&gt;</code> of the <code>code</code> tag to avoid a spurious blank line. What a nuisance.</p>
+
+		</div>
+        <div class="footer">
+		
+<p>Last updated on Oct 20, 2006.</p>
+
+
+        </div>
+    </div>
+</body>
+</html>

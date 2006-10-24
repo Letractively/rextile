@@ -1,0 +1,62 @@
+h1. Editing Rextile Documents
+
+"Textile":tex is a format that can be easily edited in any old plain-text editor. However, adding a bit of syntax highlighting can make the experience even more pleasant.
+
+A good trick is to set @h1.@ and @h2.@ and so forth to start line comments. Then format those comments with a conspicuous style -- underlined, for example.
+
+
+<%= toc %>
+
+
+h2. Notepad++
+
+"Notepad++":npp is an open-source editor for Windows which can be configured rather nicely for Textile documents. Just add something like the following to your @userDefineLang.xml@, and then tweak it until you like it:
+
+<pre><code
+><UserLang name="rextile" ext="rextile">
+	<Settings>
+		<Global caseIgnored="no" />
+		<TreatAsSymbol comment="yes" commentLine="no" />
+		<Prefix words1="no" words2="no" words3="no" words4="no" />
+	</Settings>
+	<KeywordLists>
+		<Keywords name="Delimiters">@&quot;0@&quot;0</Keywords>
+		<Keywords name="Folder+">&lt;div</Keywords>
+		<Keywords name="Folder-">&lt;/div&gt;</Keywords>
+		<Keywords name="Operators">@</Keywords>
+		<Keywords name="Comment"> 1&lt;% 2%&gt; 0h1. 0h2. 0h3.</Keywords>
+		<Keywords name="Words1"> h4. h5. pre.</Keywords>
+		<Keywords name="Words2"></Keywords>
+		<Keywords name="Words3"></Keywords>
+		<Keywords name="Words4"></Keywords>
+	</KeywordLists>
+	<Styles>
+		<WordsStyle name="DEFAULT" styleID="11" fgColor="000000" bgColor="FFFFFF" fontName="Verdana" fontStyle="0" />
+		<WordsStyle name="FOLDEROPEN" styleID="12" fgColor="008000" bgColor="FFFFFF" fontName="" fontStyle="1" />
+		<WordsStyle name="FOLDERCLOSE" styleID="13" fgColor="008000" bgColor="FFFFFF" fontName="" fontStyle="1" />
+		<WordsStyle name="KEYWORD1" styleID="5" fgColor="804040" bgColor="FFFFFF" fontName="Verdana" fontStyle="5" fontSize="9" />
+		<WordsStyle name="KEYWORD2" styleID="6" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+		<WordsStyle name="KEYWORD3" styleID="7" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+		<WordsStyle name="KEYWORD4" styleID="8" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+		<WordsStyle name="COMMENT" styleID="1" fgColor="0000A0" bgColor="FFFFFF" fontName="" fontStyle="0" fontSize="9" />
+		<WordsStyle name="COMMENT LINE" styleID="2" fgColor="804000" bgColor="FFFFFF" fontName="Verdana" fontStyle="5" />
+		<WordsStyle name="NUMBER" styleID="4" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+		<WordsStyle name="OPERATOR" styleID="10" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+		<WordsStyle name="DELIMINER1" styleID="14" fgColor="008000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+		<WordsStyle name="DELIMINER2" styleID="15" fgColor="800000" bgColor="FFFFFF" fontName="Verdana" fontStyle="0" />
+		<WordsStyle name="DELIMINER3" styleID="16" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+	</Styles>
+</UserLang>
+</code></pre>
+
+
+h2. JEdit
+
+"JEdit":jed is another open-source editor, written in Java. "Xilize":xil -- which inspired Rextile -- comes with a plugin for JEdit that adds syntax highlighting. It can be used for Rextile documents as well.
+
+
+
+[tex]http://www.textism.com/tools/textile/
+[xil]http://xilize.sourceforge.net/index.html
+[npp]http://notepad-plus.sourceforge.net/uk/site.htm
+[jed]http://www.jedit.org/
