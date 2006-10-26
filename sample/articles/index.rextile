@@ -1,4 +1,3 @@
-<% eval read_closest_file( 'index.rb' ) %>
 
 h1. Sample Article Collection
 

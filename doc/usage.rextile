@@ -68,7 +68,7 @@ h2. <a name="ooop">Out-of-order Processing</a>
 
 You can instruct Rextile to process a file during the processing of another file. This is handy when automatically building listings of other files in index pages, for example. To do this, just say @process 'my/path/myfile.rextile'@ within an embedded "script":scripting.htm. Rextile maintains a list of files already processed so files don't get processed twice.
 
-You can see this in action in the file @sample/articles/index.rextile@.
+You can see this in action in the file @sample/articles/index.rb@.
 
 
 h2. File Lookup

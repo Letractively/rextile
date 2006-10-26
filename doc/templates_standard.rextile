@@ -14,6 +14,7 @@ To use the standard template, your site will typically contain the following fil
 | @style.css@					| style sheet									|
 | @index.rextile@				| index of the root folder						|
 | @other.rextile@				| another document in the root folder			|
+| @other.rb@					| Ruby code specific to other.rextile				|
 | @articles/_settings.rb@		| per folder settings of a subfolder				|
 | @articles/index.rextile@		| index of a subfolder							|
 | @articles/article.rextile@		| another document in a subfolder				|
@@ -29,14 +30,21 @@ h3. _settings.rb
 
 Overrides per-folder settings, see @templates/standard/_init.rb@ for an overview. You will mostly be adding to @@crumbs@ here to define the "breadcrumbs navigation":#crumbs captions:
 
-	@crumbs += ['Rextile Docs'] 
+	@crumbs << 'Rextile Docs'
+
+
+h3. other.rb
+
+The standard template automatically includes the corresponding @.rb@ at the top of every @.rextile@ page if it exists. This makes the @.rb@ file a convenient place for custom script code called by @<%%...%>@ blocks on the page.
 
 	
 h3. style.css
 
 Defines the styling of the site. Plain HTML is not particulary beautiful, so you will want to do this. To reference the style sheet, add something like the following to the site root's @_settings.rb@:
 
-	@head_nodes += ['<link rel="stylesheet" type="text/css" href="' + root_path + 'style.css" />']
+<pre><code
+>@head_nodes << '<link rel="stylesheet" type="text/css" href="' + root_path + 'style.css" />'
+</code></pre>
 
 	
 h3. Custom Header and Footer

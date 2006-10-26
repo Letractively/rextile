@@ -28,7 +28,7 @@
 	<p>The standard template comes with Rextile. It is located in <code>templates/standard</code> in the folder where you installed Rextile. It defines specialized <code>_wrapper.rextinc</code> and <code>_wrapper.xhtml</code> files, and a number of auxiliary files which make site administration easier. The standard template is a good example of how to use Rextile.</p>
 
 
-<div class="toc"><ul class="toc toc1"><li class="withitems"><a href="#pagetoc__1">Site Structure</a><ul class="toc toc2"><li><a href="#pagetoc__1_1">_site.rb</a></li><li><a href="#pagetoc__1_2">_settings.rb</a></li><li><a href="#pagetoc__1_3">style.css</a></li><li><a href="#pagetoc__1_4">Custom Header and Footer</a></li></ul></li><li><a href="#pagetoc__2">Document and Page Title</a></li><li><a href="#crumbs">Breadcrumbs Navigation</a></li><li><a href="#pagetoc__4">Table Of Contents</a></li><li><a href="#pagetoc__5">Adding Custom Scripts</a></li></ul></div>
+<div class="toc"><ul class="toc toc1"><li class="withitems"><a href="#pagetoc__1">Site Structure</a><ul class="toc toc2"><li><a href="#pagetoc__1_1">_site.rb</a></li><li><a href="#pagetoc__1_2">_settings.rb</a></li><li><a href="#pagetoc__1_3">other.rb</a></li><li><a href="#pagetoc__1_4">style.css</a></li><li><a href="#pagetoc__1_5">Custom Header and Footer</a></li></ul></li><li><a href="#pagetoc__2">Document and Page Title</a></li><li><a href="#crumbs">Breadcrumbs Navigation</a></li><li><a href="#pagetoc__4">Table Of Contents</a></li><li><a href="#pagetoc__5">Adding Custom Scripts</a></li></ul></div>
 
 	<h2><a name="pagetoc__1">Site Structure</a></h2>
 
@@ -56,6 +56,10 @@
 		<tr>
 			<td> <code>other.rextile</code>                </td>
 			<td> another document in the root folder            </td>
+		</tr>
+		<tr>
+			<td> <code>other.rb</code>                    </td>
+			<td> Ruby code specific to other.rextile                </td>
 		</tr>
 		<tr>
 			<td> <code>articles/_settings.rb</code>        </td>
@@ -89,19 +93,25 @@
 	<p>Overrides per-folder settings, see <code>templates/standard/_init.rb</code> for an overview. You will mostly be adding to <code>@crumbs</code> here to define the <a href="#crumbs">breadcrumbs navigation</a> captions:</p>
 
 
-	<pre><code>@crumbs += ['Rextile Docs']</code></pre>
+	<pre><code>@crumbs &lt;&lt; 'Rextile Docs'</code></pre>
 
 
-	<h3><a name="pagetoc__1_3">style.css</a></h3>
+	<h3><a name="pagetoc__1_3">other.rb</a></h3>
+
+
+	<p>The standard template automatically includes the corresponding <code>.rb</code> at the top of every <code>.rextile</code> page if it exists. This makes the <code>.rb</code> file a convenient place for custom script code called by <code>&lt;%...%&gt;</code> blocks on the page.</p>
+
+
+	<h3><a name="pagetoc__1_4">style.css</a></h3>
 
 
 	<p>Defines the styling of the site. Plain <span class="caps">HTML</span> is not particulary beautiful, so you will want to do this. To reference the style sheet, add something like the following to the site root&#8217;s <code>_settings.rb</code>:</p>
 
 
-	<pre><code>@head_nodes += ['<link href="' + root_path + 'style.css" rel="stylesheet" type="text/css" />']</code></pre>
+<pre><code>@head_nodes &lt;&lt; '&lt;link rel="stylesheet" type="text/css" href="' + root_path + 'style.css" /&gt;'
+</code></pre>
 
-
-	<h3><a name="pagetoc__1_4">Custom Header and Footer</a></h3>
+	<h3><a name="pagetoc__1_5">Custom Header and Footer</a></h3>
 
 
 	<p>To override header and footer elements, you can add your own versions of</p>
@@ -205,7 +215,7 @@ Here goes...
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Oct 24, 2006.</p>
+<br />Last updated on Oct 26, 2006.</p>
 
 
         </div>
