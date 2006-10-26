@@ -1,9 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%
-	if @page_title == '' then
-		@page_title = (html_doc%:h1).inner_html
-	end
+	@page_title ||= (html_doc%:h1).inner_html
 %>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -18,7 +16,7 @@
     <div class="all">
 		<div class="header">
 		
-<%i readClosestFile( '_header.xhtml' ) %>
+<%i read_closest_file( '_header.xhtml' ) %>
 
 		</div>
         <div class="content">
@@ -28,7 +26,7 @@ CONTENT GOES HERE
 		</div>
         <div class="footer">
 		
-<%i readClosestFile( '_footer.xhtml' ) %>
+<%i read_closest_file( '_footer.xhtml' ) %>
 
         </div>
     </div>

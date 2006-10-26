@@ -1,3 +1,3 @@
 
-@crumbs += ['Sample'] 
+@crumbs << 'Sample'
 

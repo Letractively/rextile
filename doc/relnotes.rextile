@@ -1,0 +1,26 @@
+
+h1. Release Notes
+
+<%= toc %>
+
+
+h2. Rextile 1.1
+
+h5. New
+
+	* Support "out-of-order processing of pages":usage.htm#ooop to enable auto-building of page indexes.
+	
+h5. Better
+
+	* Adapted names and indenting to Ruby conventions.
+	* Separated @run.rb@ from @rextile.rb@.
+
+h5. Fixed
+
+	* Standard template properly inserts @@styles@ into the header.
+
+
+h2. Rextile 1.0
+
+This was the initial release.
+

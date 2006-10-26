@@ -14,7 +14,7 @@
     <div class="all">
 		<div class="header">
 		
-<div class="crumbs">
+<div class="nav crumbs">
 	<a href="index.htm">Rextile</a> &gt; 
 </div>
 
@@ -25,7 +25,7 @@
 <h1>Using Rextile</h1>
 
 
-<div class="toc"><ul class="toc toc1"><li><a href="#pagetoc__1">Running Rextile</a></li><li class="withitems"><a href="#pagetoc__2">How .rextile Files Are Processed</a><ul class="toc toc2"><li><a href="#pagetoc__2_1">Textile Processing</a></li><li><a href="#pagetoc__2_2"><span class="caps">XHTML</span> Processing</a></li><li><a href="#pagetoc__2_3"><span class="caps">XHTML</span> Script Node Processing</a></li></ul></li><li><a href="#pagetoc__3">File Lookup</a></li><li class="withitems"><a href="#pagetoc__4">Sample Wrapper Files</a><ul class="toc toc2"><li><a href="#pagetoc__4_1">_wrapper.rextinc</a></li><li><a href="#pagetoc__4_2">_wrapper.xhtml</a></li></ul></li></ul></div>
+<div class="toc"><ul class="toc toc1"><li><a href="#pagetoc__1">Running Rextile</a></li><li class="withitems"><a href="#pagetoc__2">How .rextile Files Are Processed</a><ul class="toc toc2"><li><a href="#pagetoc__2_1">Textile Processing</a></li><li><a href="#pagetoc__2_2"><span class="caps">XHTML</span> Processing</a></li><li><a href="#pagetoc__2_3"><span class="caps">XHTML</span> Script Node Processing</a></li></ul></li><li><a href="#ooop">Out-of-order Processing</a></li><li><a href="#pagetoc__4">File Lookup</a></li><li class="withitems"><a href="#pagetoc__5">Sample Wrapper Files</a><ul class="toc toc2"><li><a href="#pagetoc__5_1">_wrapper.rextinc</a></li><li><a href="#pagetoc__5_2">_wrapper.xhtml</a></li></ul></li></ul></div>
 
 	<h2><a name="pagetoc__1">Running Rextile</a></h2>
 
@@ -33,7 +33,7 @@
 	<p>Rextile is an offline site-construction tool that works on files and folders. Running it is very simple. Just change to your site&#8217;s root folder and issue:</p>
 
 
-	<pre><code>ruby rextile.rb</code></pre>
+	<pre><code>ruby /path/to/rextile/run.rb</code></pre>
 
 
 	<p>Here&#8217;s what this does:</p>
@@ -154,10 +154,19 @@
 	</ul>
 
 
-	<h2><a name="pagetoc__3">File Lookup</a></h2>
+	<h2><a name="ooop">Out-of-order Processing</a></h2>
 
 
-	<p>When Rextile looks for the wrapper files <code>_wrapper.rextinc</code> and <code>_wrapper.xhtml</code>, it uses the method <code>readClosestFile()</code> to do so. This method looks in the current <code>.rextile</code> file&#8217;s folder, and then in all its parent folders up to the site root. Finally, it looks in <code>template_path</code>. It returns the first matching file. This means you can override the files at every folder level of your site.</p>
+	<p>You can instruct Rextile to process a file during the processing of another file. This is handy when automatically building listings of other files in index pages, for example. To do this, just say <code>process 'my/path/myfile.rextile'</code> within an embedded <a href="scripting.htm">script</a>. Rextile maintains a list of files already processed so files don&#8217;t get processed twice.</p>
+
+
+	<p>You can see this in action in the file <code>sample/articles/index.rextile</code>.</p>
+
+
+	<h2><a name="pagetoc__4">File Lookup</a></h2>
+
+
+	<p>When Rextile looks for the wrapper files <code>_wrapper.rextinc</code> and <code>_wrapper.xhtml</code>, it uses the method <code>read_closest_file()</code> to do so. This method looks in the current <code>.rextile</code> file&#8217;s folder, and then in all its parent folders up to the site root. Finally, it looks in <code>template_path</code>. It returns the first matching file. This means you can override the files at every folder level of your site.</p>
 
 
 	<p>The <a href="templates_standard.htm">standard template</a> also makes use of this method to find auxiliary files like, for example, <code>_init.rb</code>.</p>
@@ -167,18 +176,18 @@
 
 
 	<ul>
-	<li><code>readPrependedFiles()</code>     &#8211; adds files in outer folders first</li>
-		<li><code>readAppendedFiles()</code> &#8211; adds files in outer folders last</li>
+	<li><code>read_prepended_files()</code>     &#8211; adds files in outer folders first</li>
+		<li><code>read_appended_files()</code> &#8211; adds files in outer folders last</li>
 	</ul>
 
 
 	<p>The <a href="templates_standard.htm">standard template</a> uses the former to read <code>_settings.rb</code>. This means that inner settings are evaluated last and thus have precendence.</p>
 
 
-	<h2><a name="pagetoc__4">Sample Wrapper Files</a></h2>
+	<h2><a name="pagetoc__5">Sample Wrapper Files</a></h2>
 
 
-	<h3><a name="pagetoc__4_1">_wrapper.rextinc</a></h3>
+	<h3><a name="pagetoc__5_1">_wrapper.rextinc</a></h3>
 
 
 	<p>The Rextile wrapper file, if present, is used to define a common header and footer for every page. Rextile simply uses the wrapper file&#8217;s source and, within it, replaces the sequence <code>CONTENT GOES HERE</code> by the page&#8217;s source text. For example:</p>
@@ -194,7 +203,7 @@ p=. Footer
 	<p>More typical than this contrived example is putting a script block in the header part where you initialize custom instance variables and <code>require</code> global modules. Those can then be used in script blocks within the pages themselves, and in the <span class="caps">HTML</span> script blocks in <code>_wrapper.xhtml</code>. See the <a href="templates_standard.htm">standard template</a> for a more elaborate example.</p>
 
 
-	<h3><a name="pagetoc__4_2">_wrapper.xhtml</a></h3>
+	<h3><a name="pagetoc__5_2">_wrapper.xhtml</a></h3>
 
 
 	<p>The <span class="caps">XHTML</span> wrapper file, if present, defines the common <span class="caps">XHTML</span> header and footer for every page. Rextile simply uses the wrapper file&#8217;s source and, within it, replaces the sequence <code>CONTENT GOES HERE</code> by the body <span class="caps">XHTML</span> produced for the page. For example:</p>
@@ -219,7 +228,7 @@ CONTENT GOES HERE
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Oct 20, 2006.</p>
+<br />Last updated on Oct 26, 2006.</p>
 
 
         </div>

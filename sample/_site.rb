@@ -1,3 +1,3 @@
 
 # Use Rextile's default template.
-@template_path = '../templates/default'
+@template_path = '../templates/standard'

@@ -8,7 +8,7 @@ h2. Running Rextile
 
 Rextile is an offline site-construction tool that works on files and folders. Running it is very simple. Just change to your site's root folder and issue:
 
-	ruby rextile.rb
+	ruby /path/to/rextile/run.rb
 	
 Here's what this does:
 
@@ -19,7 +19,7 @@ Here's what this does:
 
 h2. How .rextile Files Are Processed
 
-For each @.rextile@ file, Rextile processes first the "Textile":tex form, then the XHTML form. 
+For each @.rextile@ file, Rextile processes first the "Textile":tex form, then the XHTML form.
 
 h3. Textile Processing
 
@@ -64,16 +64,23 @@ h3. XHTML Script Node Processing
 	* Replace the node by the root of the new DOM.
 
 
+h2. <a name="ooop">Out-of-order Processing</a>
+
+You can instruct Rextile to process a file during the processing of another file. This is handy when automatically building listings of other files in index pages, for example. To do this, just say @process 'my/path/myfile.rextile'@ within an embedded "script":scripting.htm. Rextile maintains a list of files already processed so files don't get processed twice.
+
+You can see this in action in the file @sample/articles/index.rextile@.
+
+
 h2. File Lookup
 
-When Rextile looks for the wrapper files @_wrapper.rextinc@ and @_wrapper.xhtml@, it uses the method @readClosestFile()@ to do so. This method looks in the current @.rextile@ file's folder, and then in all its parent folders up to the site root. Finally, it looks in @template_path@. It returns the first matching file. This means you can override the files at every folder level of your site.
+When Rextile looks for the wrapper files @_wrapper.rextinc@ and @_wrapper.xhtml@, it uses the method @read_closest_file()@ to do so. This method looks in the current @.rextile@ file's folder, and then in all its parent folders up to the site root. Finally, it looks in @template_path@. It returns the first matching file. This means you can override the files at every folder level of your site.
 
 The "standard template":def also makes use of this method to find auxiliary files like, for example, @_init.rb@.
 
 There are two other, related methods, that concatenate all of the files, rather than just returning the first match. They are
 
-	* @readPrependedFiles()@	 - adds files in outer folders first
-	* @readAppendedFiles()@ - adds files in outer folders last
+	* @read_prepended_files()@	 - adds files in outer folders first
+	* @read_appended_files()@ - adds files in outer folders last
 
 The "standard template":def uses the former to read @_settings.rb@. This means that inner settings are evaluated last and thus have precendence.
 

@@ -1,0 +1,8 @@
+<% eval read_closest_file( 'index.rb' ) %>
+
+h1. Sample Article Collection
+
+This is a minimalistic sample of an article collection which is indexed automatically, newest first:
+
+<%= index_all_except( /.*/, /index\.rextile/ ) %>
+
