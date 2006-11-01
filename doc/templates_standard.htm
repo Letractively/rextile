@@ -28,7 +28,7 @@
 	<p>The standard template comes with Rextile. It is located in <code>templates/standard</code> in the folder where you installed Rextile. It defines specialized <code>_wrapper.rextinc</code> and <code>_wrapper.xhtml</code> files, and a number of auxiliary files which make site administration easier. The standard template is a good example of how to use Rextile.</p>
 
 
-<div class="toc"><ul class="toc toc1"><li class="withitems"><a href="#pagetoc__1">Site Structure</a><ul class="toc toc2"><li><a href="#pagetoc__1_1">_site.rb</a></li><li><a href="#pagetoc__1_2">_settings.rb</a></li><li><a href="#pagetoc__1_3">other.rb</a></li><li><a href="#pagetoc__1_4">style.css</a></li><li><a href="#pagetoc__1_5">Custom Header and Footer</a></li></ul></li><li><a href="#pagetoc__2">Document and Page Title</a></li><li><a href="#crumbs">Breadcrumbs Navigation</a></li><li><a href="#pagetoc__4">Table Of Contents</a></li><li><a href="#pagetoc__5">Adding Custom Scripts</a></li></ul></div>
+<div class="toc"><ul class="toc toc1"><li class="withitems"><a href="#pagetoc__1">Site Structure</a><ul class="toc toc2"><li><a href="#pagetoc__1_1">_site.rb</a></li><li><a href="#pagetoc__1_2">_settings.rb</a></li><li><a href="#pagetoc__1_3">_links.rextinc</a></li><li><a href="#pagetoc__1_4">other.rb</a></li><li><a href="#pagetoc__1_5">style.css</a></li><li><a href="#pagetoc__1_6">Custom Header and Footer</a></li></ul></li><li><a href="#pagetoc__2">Document and Page Title</a></li><li><a href="#crumbs">Breadcrumbs Navigation</a></li><li><a href="#pagetoc__4">Table Of Contents</a></li><li><a href="#pagetoc__5">Adding Custom Scripts</a></li></ul></div>
 
 	<h2><a name="pagetoc__1">Site Structure</a></h2>
 
@@ -44,6 +44,10 @@
 		<tr>
 			<td> <code>_settings.rb</code>                </td>
 			<td> per folder settings    (<code>@crumbs</code>, for example)        </td>
+		</tr>
+		<tr>
+			<td> <code>_links.rextinc</code>                </td>
+			<td> global link target definitions                    </td>
 		</tr>
 		<tr>
 			<td> <code>style.css</code>                    </td>
@@ -64,6 +68,10 @@
 		<tr>
 			<td> <code>articles/_settings.rb</code>        </td>
 			<td> per folder settings of a subfolder                </td>
+		</tr>
+		<tr>
+			<td> <code>articles/_links.rextinc</code>        </td>
+			<td> per folder additional link target definitions        </td>
 		</tr>
 		<tr>
 			<td> <code>articles/index.rextile</code>        </td>
@@ -96,13 +104,24 @@
 	<pre><code>@crumbs &lt;&lt; 'Rextile Docs'</code></pre>
 
 
-	<h3><a name="pagetoc__1_3">other.rb</a></h3>
+	<h3><a name="pagetoc__1_3">_links.rextinc</a></h3>
+
+
+	<p>Defines global link targets for deferred links. I strongly suggest you place them all in a central <code>_links.rextinc</code> file and use the form <code>:-abbr</code> for them. This way, Rextile automatically warns you about undefined deferred targets. You can define additional link targets for individual subfolders in local <code>_links.rextinc</code> files, too. Example:</p>
+
+
+<pre><code>[-rb]http://ruby-lang.org/
+[-tex]http://en.wikipedia.org/wiki/Textile_%28markup_language%29
+[-erb]http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/
+</code></pre>
+
+	<h3><a name="pagetoc__1_4">other.rb</a></h3>
 
 
 	<p>The standard template automatically includes the corresponding <code>.rb</code> at the top of every <code>.rextile</code> page if it exists. This makes the <code>.rb</code> file a convenient place for custom script code called by <code>&lt;%...%&gt;</code> blocks on the page.</p>
 
 
-	<h3><a name="pagetoc__1_4">style.css</a></h3>
+	<h3><a name="pagetoc__1_5">style.css</a></h3>
 
 
 	<p>Defines the styling of the site. Plain <span class="caps">HTML</span> is not particulary beautiful, so you will want to do this. To reference the style sheet, add something like the following to the site root&#8217;s <code>_settings.rb</code>:</p>
@@ -111,7 +130,7 @@
 <pre><code>@head_nodes &lt;&lt; '&lt;link rel="stylesheet" type="text/css" href="' + root_path + 'style.css" /&gt;'
 </code></pre>
 
-	<h3><a name="pagetoc__1_5">Custom Header and Footer</a></h3>
+	<h3><a name="pagetoc__1_6">Custom Header and Footer</a></h3>
 
 
 	<p>To override header and footer elements, you can add your own versions of</p>
@@ -215,7 +234,7 @@ Here goes...
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Oct 26, 2006.</p>
+<br />Last updated on Nov 01, 2006.</p>
 
 
         </div>

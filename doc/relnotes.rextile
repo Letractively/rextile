@@ -9,6 +9,8 @@ h2. Rextile 1.1
 h5. New
 
 	* Support "out-of-order processing of pages":usage.htm#ooop to enable auto-building of page indexes.
+	* Support for @_links.rextinc@ added to standard template.
+	* Warnings for missing @:-abbr@ style deferred link targets.
 	
 h5. Better
 

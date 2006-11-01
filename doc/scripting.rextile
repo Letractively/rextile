@@ -1,8 +1,8 @@
 h1. Scripting
 
-You can embed Ruby script blocks in Rextile documents (using "erb":erb). Simply surround them with @<%%...%>@ tags. A script block like @<%%=...%>@ inserts its result at the point of the block, a block without the @=@ inserts nothing. All these script blocks are run before the text is converted from "Textile":tex to HTML.
+You can embed Ruby script blocks in Rextile documents (using "erb":-erb). Simply surround them with @<%%...%>@ tags. A script block like @<%%=...%>@ inserts its result at the point of the block, a block without the @=@ inserts nothing. All these script blocks are run before the text is converted from "Textile":-tex to HTML.
 
-Script blocks within the XHTML wrapper can access the "Hpricot":hpricot DOM of the XHTML document -- as built so far -- in @html_doc@. This DOM is read only. But you can, for example, query it using @REXML::XPath@ to build a table of contents.
+Script blocks within the XHTML wrapper can access the "Hpricot":-hpricot DOM of the XHTML document -- as built so far -- in @html_doc@. This DOM is read only. But you can, for example, query it using @REXML::XPath@ to build a table of contents.
 
 If you want to defer a script block within the Rextile source until the XHTML processing phase - to get at the DOM, for example - you have replace the @%@ with a @§@ in the script block delimiters.
 
@@ -17,8 +17,4 @@ end
 </pre>
 
 The script node calls another, deferred function, which can then access the DOM. See the @xtoc()@function in @templates/standard/_globals.rb@ for a complete example.
-
-
-[erb]http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/
-[hpricot]http://code.whytheluckystiff.net/hpricot/wiki
 

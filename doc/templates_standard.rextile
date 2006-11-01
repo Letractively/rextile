@@ -11,11 +11,13 @@ To use the standard template, your site will typically contain the following fil
 
 | @_site.rb@					| site root, indicates template to use				|
 | @_settings.rb@				| per folder settings	(@@crumbs@, for example)		|
+| @_links.rextinc@				| global link target definitions					|
 | @style.css@					| style sheet									|
 | @index.rextile@				| index of the root folder						|
 | @other.rextile@				| another document in the root folder			|
 | @other.rb@					| Ruby code specific to other.rextile				|
 | @articles/_settings.rb@		| per folder settings of a subfolder				|
+| @articles/_links.rextinc@		| per folder additional link target definitions		|
 | @articles/index.rextile@		| index of a subfolder							|
 | @articles/article.rextile@		| another document in a subfolder				|
 
@@ -32,6 +34,17 @@ Overrides per-folder settings, see @templates/standard/_init.rb@ for an overview
 
 	@crumbs << 'Rextile Docs'
 
+	
+h3. _links.rextinc
+
+Defines global link targets for deferred links. I strongly suggest you place them all in a central @_links.rextinc@ file and use the form @:-abbr@ for them. This way, Rextile automatically warns you about undefined deferred targets. You can define additional link targets for individual subfolders in local @_links.rextinc@ files, too. Example:
+
+<pre><code
+>[-rb]http://ruby-lang.org/
+[-tex]http://en.wikipedia.org/wiki/Textile_%28markup_language%29
+[-erb]http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/
+</code></pre>
+	
 
 h3. other.rb
 

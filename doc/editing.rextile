@@ -1,6 +1,6 @@
 h1. Editing Rextile Documents
 
-"Textile":tex is a format that can be easily edited in any old plain-text editor. However, adding a bit of syntax highlighting can make the experience even more pleasant.
+"Textile":-tex is a format that can be easily edited in any old plain-text editor. However, adding a bit of syntax highlighting can make the experience even more pleasant.
 
 A good trick is to set @h1.@ and @h2.@ and so forth to start line comments. Then format those comments with a conspicuous style -- underlined, for example.
 
@@ -10,7 +10,7 @@ A good trick is to set @h1.@ and @h2.@ and so forth to start line comments. Then
 
 h2. Notepad++
 
-"Notepad++":npp is an open-source editor for Windows which can be configured rather nicely for Textile documents. Just add something like the following to your @userDefineLang.xml@, and then tweak it until you like it:
+"Notepad++":-npp is an open-source editor for Windows which can be configured rather nicely for Textile documents. Just add something like the following to your @userDefineLang.xml@, and then tweak it until you like it:
 
 <pre><code
 ><UserLang name="rextile" ext="rextile">
@@ -52,11 +52,8 @@ h2. Notepad++
 
 h2. JEdit
 
-"JEdit":jed is another open-source editor, written in Java. "Xilize":xil -- which inspired Rextile -- comes with a plugin for JEdit that adds syntax highlighting. It can be used for Rextile documents as well.
+"JEdit":-jed is another open-source editor, written in Java. "Xilize":-xil -- which inspired Rextile -- comes with a plugin for JEdit that adds syntax highlighting. It can be used for Rextile documents as well.
 
 
-
-[tex]http://www.textism.com/tools/textile/
-[xil]http://xilize.sourceforge.net/index.html
-[npp]http://notepad-plus.sourceforge.net/uk/site.htm
-[jed]http://www.jedit.org/
+[-npp]http://notepad-plus.sourceforge.net/uk/site.htm
+[-jed]http://www.jedit.org/

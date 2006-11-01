@@ -33,7 +33,7 @@
 	<p>Rextile is an offline site-construction tool that works on files and folders. Running it is very simple. Just change to your site&#8217;s root folder and issue:</p>
 
 
-	<pre><code>ruby /path/to/rextile/run.rb</code></pre>
+	<pre><code>/path/to/rextile/rextile</code></pre>
 
 
 	<p>Here&#8217;s what this does:</p>
@@ -45,14 +45,14 @@
 
 
 	<ul>
-	<li>Read all files ending in <code>.rextile</code> in the current folder and its subfolders. Process each one and write out the resulting <code>.htm</code> file (output path and name can be changed), unless it is still the same as before.</li>
+	<li>Read all files ending in <code>.rextile</code> in the current folder and its subfolders. Process each one (see below) and write out the resulting <code>.htm</code> file (output path and name can be changed), unless it is still the same as before.</li>
 	</ul>
 
 
 	<h2><a name="pagetoc__2">How .rextile Files Are Processed</a></h2>
 
 
-	<p>For each <code>.rextile</code> file, Rextile processes first the <a href="http://www.textism.com/tools/textile/">Textile</a> form, then the <span class="caps">XHTML</span> form.</p>
+	<p>For each <code>.rextile</code> file, Rextile processes first the <a href="http://en.wikipedia.org/wiki/Textile_%28markup_language%29">Textile</a> form, then the <span class="caps">XHTML</span> form.</p>
 
 
 	<h3><a name="pagetoc__2_1">Textile Processing</a></h3>
@@ -79,12 +79,17 @@
 
 
 	<ul>
-	<li>Run <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/">erb</a> on the string <code>rextile</code>.</li>
+	<li>Run <a href="erb">erb</a> on the string <code>rextile</code>.</li>
 	</ul>
 
 
 	<ul>
-	<li>Run <a href="http://whytheluckystiff.net/ruby/redcloth/">RedCloth</a> on the string <code>rextile</code>, returning a new string <code>html</code>.</li>
+	<li>Run <a href="red">RedCloth</a> on the string <code>rextile</code>, returning a new string <code>html</code>.</li>
+	</ul>
+
+
+	<ul>
+	<li>Issue a warning for all remaining links of the form <code>&lt;a href="-..."&gt;</code>. This helps you spot missing deferred link targets if you always write deferred links like <code>:-abbr</code>.</li>
 	</ul>
 
 
@@ -107,17 +112,22 @@
 
 
 	<ul>
-	<li>Setup <code>@html_doc</code> as an <a href="hpricot">Hpricot</a> DOM tree of <code>html</code> as it stands so far.</li>
+	<li>Replace all <code>&lt;%i expr %&gt;</code> sequences by the result of evaluating <code>expr</code>. This is meant for include files, as in <code>&lt;%i read_closest_file( '_header.xhtml' ) %&gt;</code> which must be processed first as they may contain definitions used by later script sequences.</li>
 	</ul>
 
 
 	<ul>
-	<li>Run <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/">erb</a> on the string <code>html</code>.</li>
+	<li>Setup <code>@html_doc</code> as an <a href="http://code.whytheluckystiff.net/hpricot/wiki">Hpricot</a> DOM tree of <code>html</code> as it stands so far.</li>
 	</ul>
 
 
 	<ul>
-	<li>Setup <code>@html_doc</code> as an <a href="hpricot">Hpricot</a> DOM tree of <code>html</code> anew.</li>
+	<li>Run <a href="erb">erb</a> on the string <code>html</code>.</li>
+	</ul>
+
+
+	<ul>
+	<li>Setup <code>@html_doc</code> as an <a href="http://code.whytheluckystiff.net/hpricot/wiki">Hpricot</a> DOM tree of <code>html</code> anew.</li>
 	</ul>
 
 
@@ -228,7 +238,7 @@ CONTENT GOES HERE
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Oct 26, 2006.</p>
+<br />Last updated on Nov 01, 2006.</p>
 
 
         </div>

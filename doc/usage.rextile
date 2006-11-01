@@ -8,18 +8,18 @@ h2. Running Rextile
 
 Rextile is an offline site-construction tool that works on files and folders. Running it is very simple. Just change to your site's root folder and issue:
 
-	ruby /path/to/rextile/run.rb
+	/path/to/rextile/rextile
 	
 Here's what this does:
 
 	* Read and eval @_site.rb@. This is where you set global options like @@template_path@.
 	
-	* Read all files ending in @.rextile@ in the current folder and its subfolders. Process each one and write out the resulting @.htm@ file (output path and name can be changed), unless it is still the same as before.
+	* Read all files ending in @.rextile@ in the current folder and its subfolders. Process each one (see below) and write out the resulting @.htm@ file (output path and name can be changed), unless it is still the same as before.
 
 
 h2. How .rextile Files Are Processed
 
-For each @.rextile@ file, Rextile processes first the "Textile":tex form, then the XHTML form.
+For each @.rextile@ file, Rextile processes first the "Textile":-tex form, then the XHTML form.
 
 h3. Textile Processing
 
@@ -35,6 +35,8 @@ h3. Textile Processing
 	
 	* Run "RedCloth":red on the string @rextile@, returning a new string @html@.
 	
+	* Issue a warning for all remaining links of the form @<a href="-...">@. This helps you spot missing deferred link targets if you always write deferred links like @:-abbr@.
+	
 h3. XHTML Processing
 
 	* In the string @html@, convert all <@§...§@> sequences to @<%%...%>@ sequences.
@@ -43,11 +45,13 @@ h3. XHTML Processing
 	
 	* If found, replace @html@ with the contents of the wrapper file, but substitute the sequence @CONTENT GOES HERE@ by the former contents of @html@.
 	
-	* Setup @@html_doc@ as an "Hpricot":hpricot DOM tree of @html@ as it stands so far.
+	* Replace all @<%%i expr %>@ sequences by the result of evaluating @expr@. This is meant for include files, as in @<%%i read_closest_file( '_header.xhtml' ) %>@ which must be processed first as they may contain definitions used by later script sequences.
+	
+	* Setup @@html_doc@ as an "Hpricot":-hpricot DOM tree of @html@ as it stands so far.
 
 	* Run "erb":erb on the string @html@.
 	
-	* Setup @@html_doc@ as an "Hpricot":hpricot DOM tree of @html@ anew.
+	* Setup @@html_doc@ as an "Hpricot":-hpricot DOM tree of @html@ anew.
 	
 	* Process all nodes in @html_doc@ matching the CSS selector @pre.rscript@, as explained below.
 	
@@ -75,14 +79,14 @@ h2. File Lookup
 
 When Rextile looks for the wrapper files @_wrapper.rextinc@ and @_wrapper.xhtml@, it uses the method @read_closest_file()@ to do so. This method looks in the current @.rextile@ file's folder, and then in all its parent folders up to the site root. Finally, it looks in @template_path@. It returns the first matching file. This means you can override the files at every folder level of your site.
 
-The "standard template":def also makes use of this method to find auxiliary files like, for example, @_init.rb@.
+The "standard template":-std also makes use of this method to find auxiliary files like, for example, @_init.rb@.
 
 There are two other, related methods, that concatenate all of the files, rather than just returning the first match. They are
 
 	* @read_prepended_files()@	 - adds files in outer folders first
 	* @read_appended_files()@ - adds files in outer folders last
 
-The "standard template":def uses the former to read @_settings.rb@. This means that inner settings are evaluated last and thus have precendence.
+The "standard template":-std uses the former to read @_settings.rb@. This means that inner settings are evaluated last and thus have precendence.
 
 
 h2. Sample Wrapper Files
@@ -99,7 +103,7 @@ CONTENT GOES HERE
 p=. Footer
 </code></pre>
 
-More typical than this contrived example is putting a script block in the header part where you initialize custom instance variables and @require@ global modules. Those can then be used in script blocks within the pages themselves, and in the HTML script blocks in @_wrapper.xhtml@. See the "standard template":def for a more elaborate example.
+More typical than this contrived example is putting a script block in the header part where you initialize custom instance variables and @require@ global modules. Those can then be used in script blocks within the pages themselves, and in the HTML script blocks in @_wrapper.xhtml@. See the "standard template":-std for a more elaborate example.
 
 h3. _wrapper.xhtml
 
@@ -119,11 +123,4 @@ CONTENT GOES HERE
 </html>
 </code></pre>
 
-Using XHTML script blocks of the form @<%%...%>@ here is very handy. See the "standard template":def for a more elaborate example.
-
-
-	
-[erb]http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/
-[red]http://whytheluckystiff.net/ruby/redcloth/
-[tex]http://www.textism.com/tools/textile/
-[def]templates_standard.htm
+Using XHTML script blocks of the form @<%%...%>@ here is very handy. See the "standard template":-std for a more elaborate example.

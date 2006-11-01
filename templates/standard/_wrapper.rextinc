@@ -10,3 +10,4 @@ eval read_file( specifics ) if File.exist?( specifics )
 
 CONTENT GOES HERE
 
+<%= read_prepended_files( '_links.rextinc' ) %>

@@ -23,6 +23,7 @@ class Rextile
   def initialize()
     @template_path = ''
     @processed = {}
+    @warnings = 0
     eval read_file( SITE_FILE )
     puts 'Using template ' + template_path unless template_path == ''
   end
@@ -38,6 +39,7 @@ class Rextile
   # Processes all files in the list.
   def processAll( files )
     files.each {|file| process file }
+    recap_warnings
   end
 
   # Processes the single, named file.
@@ -59,6 +61,15 @@ class Rextile
       puts "  -> " + path
       File.open( path, "w" ) {|file| file.write content }
     end
+  end
+  
+  def warn( msg )
+    @warnings += 1
+    puts '  WARNING: ' + msg
+  end
+  
+  def recap_warnings()
+    puts "\n#{@warnings} warning(s)" if @warnings > 0
   end
 
 
@@ -147,7 +158,7 @@ class Rextile
       root
     end
     
-    def_delegators :@rextile, :template_path, :read_file, :write_file, :process
+    def_delegators :@rextile, :template_path, :read_file, :write_file, :process, :warn
 
   private
 
@@ -166,11 +177,22 @@ class Rextile
     def to_html( textile )
       rc = RexCloth.new( textile )
       html = rc.to_html()
-      html.gsub!( /§§_/, '<%' )
-      html.gsub!( /_§§/, '%>' )
+      flag_undefined_deferred_links html 
+      html.gsub! /§§_/, '<%'
+      html.gsub! /_§§/, '%>'
       html = wrap( html, XHTML_WRAPPER_FILE )
+      html = process_includes( html )
       @html_doc = parse_into_dom( html )
       erb( html )
+    end
+    
+    # Issues warnings for all undefined deferred links. This relies on you using the format
+    # "text":-abbr for links with deferred targets.
+    def flag_undefined_deferred_links( html )
+      html.gsub( /<a href=\"\-.+\">/i ) do |match|
+        warn "Undefined deferred link #{match}."
+        match
+      end
     end
 
     # Runs all nodes of the form <span class="rscript">...</span> as Ruby scripts with access to their own location.
@@ -190,18 +212,11 @@ class Rextile
 
     # Run ERB on the given input.
     def erb( input )
-      input = process_includes( input )
       ERB.new( input ).result( binding )
     end
 
     def process_includes( s )
-      res = ''
-      rest = s
-      while rest =~ /(.*?)<%i(.*?)%>(.*)/m
-        head, inc, rest = $1, $2, $3
-        res += head + eval( inc.strip )
-      end
-      res + rest
+      s.gsub( /<%i(.*?)%>/m ) { |match| eval( $1.strip ) }
     end
 
     # Setup the plain DOM tree for XPath-lookups in scripts.

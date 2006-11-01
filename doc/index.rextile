@@ -2,22 +2,22 @@ h1. Rextile
 
 <div class="news">
 
-"Rextile 1.1":relnotes with fixes and auto-indexing support.
-<br/>%(when)Oct 27, 2006%
+"Rextile 1.1":-relnotes with fixes and auto-indexing support.
+<br/>%(when)Nov 1, 2006%
 
 Rextile 1.0 released.
 <br/>%(when)Oct 20, 2006%
 
 </div>
 
-Build XHTML documents and entire web sites using "Textile":tex -- a concise format -- and "Ruby":rb scripting.
+Build XHTML documents and entire web sites with ease. Write text using "Textile":-tex -- a format much more concise than XHTML. Automate document parts with "Ruby":-rb scripting. Generate site offline -- server gets static XHTML.
 
 * "Usage":usage.htm
 * "Standard Template":templates_standard.htm
 * "Scripting":scripting.htm
 * "Editing":editing.htm
 
-Rextile was inspired by "Xilize":xil. It uses "RedCloth":red to convert Textile to XHTML, "erb":erb to run script blocks, and "Hpricot":hpricot for DOM manipulation.
+Rextile was inspired by "Xilize":-xil. It uses "RedCloth":-red to convert Textile to XHTML, "erb":-erb to run script blocks, and "Hpricot":-hpricot for DOM manipulation.
 
 
 h2. License
@@ -28,16 +28,8 @@ Rextile is open source under a "BSD-style license":LICENSE.html.
 h2. Download
 
 "rextile-1.1.zip":http://arrenbrecht.ch/rextile/dist/rextile-1.1.zip
-<br/>Includes source and documentation. Needs "Ruby":rb and "RubyGems":gems -- which will download all other dependencies as required -- to run.
+- Includes source and documentation.
 
-"Release Notes":relnotes
+* "Release Notes":-relnotes
+* "Installation Instructions":install.htm
 
-
-[rb]http://ruby-lang.org/
-[tex]http://www.textism.com/tools/textile/
-[erb]http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/
-[xil]http://xilize.sourceforge.net/index.html
-[red]http://whytheluckystiff.net/ruby/redcloth/
-[hpricot]http://code.whytheluckystiff.net/hpricot/wiki
-[gems]http://rubygems.org/
-[relnotes]relnotes.htm

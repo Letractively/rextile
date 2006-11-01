@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+Gem.manage_gems
+
+require File.join( File.dirname( __FILE__ ), 'lib/rextile' )
+
+Rextile.new.glob

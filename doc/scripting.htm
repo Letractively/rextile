@@ -25,7 +25,7 @@
 <h1>Scripting</h1>
 
 
-	<p>You can embed Ruby script blocks in Rextile documents (using <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/">erb</a>). Simply surround them with <code>&lt;%...%&gt;</code> tags. A script block like <code>&lt;%=...%&gt;</code> inserts its result at the point of the block, a block without the <code>=</code> inserts nothing. All these script blocks are run before the text is converted from <a href="tex">Textile</a> to <span class="caps">HTML</span>.</p>
+	<p>You can embed Ruby script blocks in Rextile documents (using <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/">erb</a>). Simply surround them with <code>&lt;%...%&gt;</code> tags. A script block like <code>&lt;%=...%&gt;</code> inserts its result at the point of the block, a block without the <code>=</code> inserts nothing. All these script blocks are run before the text is converted from <a href="http://en.wikipedia.org/wiki/Textile_%28markup_language%29">Textile</a> to <span class="caps">HTML</span>.</p>
 
 
 	<p>Script blocks within the <span class="caps">XHTML</span> wrapper can access the <a href="http://code.whytheluckystiff.net/hpricot/wiki">Hpricot</a> DOM of the <span class="caps">XHTML</span> document&#8212;as built so far&#8212;in <code>html_doc</code>. This <span class="caps">DOM</span> is read only. But you can, for example, query it using <code>REXML::XPath</code> to build a table of contents.</p>
@@ -51,7 +51,7 @@ end
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Oct 24, 2006.</p>
+<br />Last updated on Nov 01, 2006.</p>
 
 
         </div>
