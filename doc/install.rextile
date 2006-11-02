@@ -1,12 +1,36 @@
 h1. Installation
 
-Rextile needs "Ruby":-rb and "RubyGems":-gems to run. On Windows, the "Ruby Installer":-rbinst installs both Ruby and RubyGems in one easy setup.
+Rextile needs "Ruby":-rb and "RubyGems":-gems to run.
 
-Once RubyGems is set up, install "RedCloth":-red and "Hpricot":-hpricot as follows:
+h5. Windows
+
+On Windows, the "Ruby Installer":-rbinst installs both Ruby and RubyGems in one easy setup.
+
+h5. Debian/Ubuntu
+
+On Debian/Ubuntu Linux, use
+
+  sudo apt-get install ruby libyaml-ruby libzlib-ruby ruby1.8-dev build-essentials
+
+Then follow the "instructions for installing RubyGems":http://rubygems.org/read/chapter/3.
+
+
+h5. Gems
+
+On both platforms, once RubyGems is set up, install "RedCloth":-red and "Hpricot":-hpricot as follows:
 
   gem install redcloth
   gem install hpricot
 
+When Hpricot prompts you for the kind of build, choose "mswin32" for Windows, and "ruby" for Linux.
+
+
+h5. Rextile
+
 Then simply unzip the @rextile-*.zip@ file to a folder of your choosing (@/path/to/rextile@ is used in these examples). On Unix, you may have to set the _executable_ bit for the file @rextile@.
 
 See "Usage":usage.htm for details on how to run Rextile.
+
+
+[-rbinst]http://rubyinstaller.rubyforge.org/wiki/wiki.pl
+[-geminst]http://rubygems.org/read/chapter/3

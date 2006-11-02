@@ -25,14 +25,41 @@
 <h1>Installation</h1>
 
 
-	<p>Rextile needs <a href="http://ruby-lang.org/">Ruby</a> and <a href="http://rubygems.org/">RubyGems</a> to run. On Windows, the <a href="-rbinst">Ruby Installer</a> installs both Ruby and RubyGems in one easy setup.</p>
+	<p>Rextile needs <a href="http://ruby-lang.org/">Ruby</a> and <a href="http://rubygems.org/">RubyGems</a> to run.</p>
 
 
-	<p>Once RubyGems is set up, install <a href="http://whytheluckystiff.net/ruby/redcloth/">RedCloth</a> and <a href="http://code.whytheluckystiff.net/hpricot/wiki">Hpricot</a> as follows:</p>
+	<h5>Windows</h5>
+
+
+	<p>On Windows, the <a href="http://rubyinstaller.rubyforge.org/wiki/wiki.pl">Ruby Installer</a> installs both Ruby and RubyGems in one easy setup.</p>
+
+
+	<h5>Debian/Ubuntu</h5>
+
+
+	<p>On Debian/Ubuntu Linux, use</p>
+
+
+	<pre><code>sudo apt-get install ruby libyaml-ruby libzlib-ruby ruby1.8-dev build-essentials</code></pre>
+
+
+	<p>Then follow the <a href="http://rubygems.org/read/chapter/3">instructions for installing RubyGems</a>.</p>
+
+
+	<h5>Gems</h5>
+
+
+	<p>On both platforms, once RubyGems is set up, install <a href="http://whytheluckystiff.net/ruby/redcloth/">RedCloth</a> and <a href="http://code.whytheluckystiff.net/hpricot/wiki">Hpricot</a> as follows:</p>
 
 
 	<pre><code>gem install redcloth
 gem install hpricot</code></pre>
+
+
+	<p>When Hpricot prompts you for the kind of build, choose &#8220;mswin32&#8221; for Windows, and &#8220;ruby&#8221; for Linux.</p>
+
+
+	<h5>Rextile</h5>
 
 
 	<p>Then simply unzip the <code>rextile-*.zip</code> file to a folder of your choosing (<code>/path/to/rextile</code> is used in these examples). On Unix, you may have to set the <em>executable</em> bit for the file <code>rextile</code>.</p>
@@ -44,7 +71,7 @@ gem install hpricot</code></pre>
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Nov 01, 2006.</p>
+<br />Last updated on Nov 02, 2006.</p>
 
 
         </div>

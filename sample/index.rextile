@@ -1,6 +1,6 @@
 h1. Rextile Sample
 
-This is a minimalistic sample of what a plain, unstyled site constructed with "Rextile":rx using the default template looks like.
+This is a minimalistic sample of what a plain, unstyled site constructed with "Rextile":-rx using the default template looks like.
 
 
 h2. Table of Contents
@@ -37,10 +37,12 @@ We can do plain Ruby in scripts:
 
 This page was last modified on <%= File.new( rextile_name ).mtime.getlocal.strftime( '%b %d, %Y' ) %>.
 
+A more sophisticated example is how to build an automatic page-index, as "shown here":articles/index.htm.
+
 
 h2. Textile Features
 
-Textile is about the simple use of common HTML elements. I am giving just a few examples here. There's more over at the "Textile site":tex.
+Textile is about the simple use of common HTML elements. I am giving just a few examples here. There's more over at the "Textile site":-tex.
 
 
 h3. Bulleted List
@@ -76,7 +78,3 @@ Here we go.
 
 As is normal with HTML, we have to put the first line right behind the @>@ of the @code@ tag to avoid a spurious blank line. What a nuisance.
 
-
-
-[rx]http://arrenbrecht.ch/rextile
-[tex]http://www.textism.com/tools/textile/
