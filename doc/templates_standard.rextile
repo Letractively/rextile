@@ -25,7 +25,7 @@ h3. _site.rb
 
 References the standard template:
 
-	@template_path = '/path/to/rextile/templates/standard'
+	@template_path = "#{INSTALL_PATH}/templates/standard'
 
 	
 h3. _settings.rb
@@ -64,10 +64,10 @@ h3. Custom Header and Footer
 
 To override header and footer elements, you can add your own versions of
 
-* @_header.xhtml@ (default is "breadcrumbs navigation":#crumbs)
-* @_footer.xthml@ (default is file modification date)
+* @_header.xhtmlinc@ (default is "breadcrumbs navigation":#crumbs)
+* @_footer.xthmlinc@ (default is file modification date)
 
-This is much better than overriding @_wrapper.xhtml@, because the latter contains quite a bit of code.
+This is much better than overriding @_wrapper.xhtmlinc@, because the latter contains quite a bit of code.
 
 
 

@@ -16,7 +16,7 @@
     <div class="all">
 		<div class="header">
 		
-<%i read_closest_file( '_header.xhtml' ) %>
+<%i read_closest_file( '_header.xhtmlinc' ) %>
 
 		</div>
         <div class="content">
@@ -26,7 +26,7 @@ CONTENT GOES HERE
 		</div>
         <div class="footer">
 		
-<%i read_closest_file( '_footer.xhtml' ) %>
+<%i read_closest_file( '_footer.xhtmlinc' ) %>
 
         </div>
     </div>

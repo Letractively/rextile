@@ -22,6 +22,10 @@ def breadcrumbs( separator )
       i -= 1
     end
   end
+  if @rootcrumb
+	res = separator + res unless res == ''
+	res = @rootcrumb + res
+  end
   res
 end
 

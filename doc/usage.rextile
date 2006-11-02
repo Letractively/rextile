@@ -41,7 +41,7 @@ h3. XHTML Processing
 
 	* In the string @html@, convert all <@§...§@> sequences to @<%%...%>@ sequences.
 
-	* Look for a file called @_wrapper.xhtml@ (file lookup rules are listed below).
+	* Look for a file called @_wrapper.xhtmlinc@ (file lookup rules are listed below).
 	
 	* If found, replace @html@ with the contents of the wrapper file, but substitute the sequence @CONTENT GOES HERE@ by the former contents of @html@.
 	
@@ -105,7 +105,7 @@ p=. Footer
 
 More typical than this contrived example is putting a script block in the header part where you initialize custom instance variables and @require@ global modules. Those can then be used in script blocks within the pages themselves, and in the HTML script blocks in @_wrapper.xhtml@. See the "standard template":-std for a more elaborate example.
 
-h3. _wrapper.xhtml
+h3. _wrapper.xhtmlinc
 
 The XHTML wrapper file, if present, defines the common XHTML header and footer for every page. Rextile simply uses the wrapper file's source and, within it, replaces the sequence @CONTENT GOES HERE@ by the body XHTML produced for the page. For example:
 

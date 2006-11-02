@@ -7,6 +7,9 @@
 # for the breadcrumbs backlink.
 @crumbs = []
 
+# Use "@rootcrumb = '<a href="http://my.extroot.org/">External Root</a>'" to define a root crumb which is not built automatically.
+@rootcrumb = nil
+
 # Use "<% @style << '...' %>" in documents to add custom style definitions to <head><style>.
 @styles = []
 

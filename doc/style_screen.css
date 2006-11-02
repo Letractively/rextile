@@ -4,6 +4,8 @@
 	#8B7765 - peachpuff4; for dimmed things like block quotes and navigation
 	#EEE6D4 - ??; for 1px lines
 	#FEF6E4 - warm shadow; for news background
+	#4682B4 - steelblue; for Java syntax highlighting
+	#D3D3D3 - lightgray; for Java syntax highlighting
 */
 
 
@@ -24,11 +26,24 @@ ul.spaced > li {
 	margin-bottom: 1ex;
 }
 
-pre {
+pre.new {
 	padding-left: 1em;
 	padding-right: 1em;
 	border: none;
 	background: #F5F3F3;
+	clear: right;
+}
+
+pre
+{
+	padding-top: .9em;
+	padding-bottom: .9em;
+	padding-left: 1em;
+	border: none;
+	border-left: solid 1px #EEE6D4;
+	border-top: solid 1px #EEE6D4;
+	border-bottom: solid 1px #EEE6D4;
+	width: 3em;
 	clear: right;
 }
 
@@ -317,21 +332,21 @@ span.j-def /* default; all the rest */ {
 }
 
 span.j-jdoc /* javadoc */ {
-	color: steelblue;
+	color: #4682B4;
 }
 
 span.j-jdoc-key /* javadoc keyword */ {
-	color: steelblue;
+	color: #4682B4;
 	font-weight: bold;
 }
 
 span.j-jdoc-html /* javadoc html tag */ {
-	color: steelblue;
+	color: #4682B4;
 	font-style: italic;
 }
 
 span.j-jdoc-link /* javadoc link */ {
-	color: steelblue;
+	color: #4682B4;
 	font-style: italic;
 }
 
@@ -350,7 +365,7 @@ table.xl {
 }
 
 table.xl td 	{
-	border: solid 1px lightgray;
+	border: solid 1px #D3D3D3;
 	text-align: left;
 	vertical-align: top;
 }

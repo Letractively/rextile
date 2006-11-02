@@ -14,10 +14,12 @@ class Rextile
   REXTILE_WRAPPER_FILE = '_wrapper.rextinc'
   
   XHTML_EXT = '.htm'
-  XHTML_WRAPPER_FILE = '_wrapper.xhtml'
+  XHTML_WRAPPER_FILE = '_wrapper.xhtmlinc'
   XHTML_SCRIPT_SEL = 'pre.rscript'
 
   CONTENT_MARKER_REGEX = /CONTENT GOES HERE/
+
+  INSTALL_PATH = File.dirname( File.dirname( __FILE__ ))
 
 
   def initialize()

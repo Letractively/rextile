@@ -206,7 +206,7 @@ table.xl
 
 table.xl td
 	{
-		border: solid 1px lightgray;
+		border: solid 1px #D3D3D3;
 		text-align: left;
 		vertical-align: top;
 	}

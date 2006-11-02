@@ -4,6 +4,14 @@ h1. Release Notes
 <%= toc %>
 
 
+h2. Rextile 1.2
+
+h5. Better
+
+	* XHTML include files now use the extension @.xhtmlinc@ instead of @.xhtml@. This clearly differentiates them from actual plain XHTML source files you might want to copy from the source to the build folder.
+	* @INSTALL_PATH@ in script blocks points to the folder where you installed Rextile. Use this to reference the "standard template":-std, for instance.
+
+
 h2. Rextile 1.1
 
 h5. New
