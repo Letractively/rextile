@@ -1,6 +1,15 @@
 # Global utility functions for Rextile's standard template.
 
 
+# Returns only the pure text content of the given node.
+#
+def text_only( node )
+	txt = ''
+	node.traverse_text{ |tn| txt << tn.content }
+	txt
+end
+
+
 # Formats the breadcrumbs accumulated in @crumbs into a series of links, separated by the
 # given separator. The last crumb is omitted of the current page's name is "index.rextile".
 #
