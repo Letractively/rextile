@@ -4,12 +4,36 @@ h1. Release Notes
 <%= toc %>
 
 
+h2.  Rextile 1.3
+
+h5. New
+
+	* Can override @@xhtml_header@ in files now to change the header. Useful for MathML, for instance.
+	
+h5. Better
+
+	* Release builds done using Rake.
+
+h5. Fixed
+
+	* Use raw text for @title@ tag.
+	* Strip hard breaks from TOC entries in standard template.
+
+
 h2. Rextile 1.2
+
+h5. New
+
+	* @INSTALL_PATH@ in script blocks points to the folder where you installed Rextile. Use this to reference the "standard template":-std, for instance.
+	* @@root_crumb@ in the standard template allows you to link to parent sites (as I link to "arrenbrecht.ch":http://arrenbrecht.ch/ at the top of this page).
 
 h5. Better
 
 	* XHTML include files now use the extension @.xhtmlinc@ instead of @.xhtml@. This clearly differentiates them from actual plain XHTML source files you might want to copy from the source to the build folder.
-	* @INSTALL_PATH@ in script blocks points to the folder where you installed Rextile. Use this to reference the "standard template":-std, for instance.
+
+h5. Fixed
+
+	* The standard template now uses only the raw text of the first @h1@ to set the page title. It also removes any @<br/>@ tags from headings when building the TOC(table of contents).
 
 
 h2. Rextile 1.1

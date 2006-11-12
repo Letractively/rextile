@@ -134,6 +134,7 @@ def make_toc_entry( node, anchor )
     node_html = node.inner_html
     node.inner_html = '<a name="' + anchor + '">' + node_html + '</a>'
   end
+  node_html.gsub! /\<br\s*\/\>/i, ''
   '<a href="#' + anchor + '">' + node_html + '</a>'
 end
 

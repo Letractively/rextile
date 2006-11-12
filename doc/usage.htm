@@ -25,7 +25,7 @@
 <h1>Using Rextile</h1>
 
 
-<div class="toc"><ul class="toc toc1"><li><a href="#pagetoc__1">Running Rextile</a></li><li class="withitems"><a href="#pagetoc__2">How .rextile Files Are Processed</a><ul class="toc toc2"><li><a href="#pagetoc__2_1">Textile Processing</a></li><li><a href="#pagetoc__2_2"><span class="caps">XHTML</span> Processing</a></li><li><a href="#pagetoc__2_3"><span class="caps">XHTML</span> Script Node Processing</a></li></ul></li><li><a href="#ooop">Out-of-order Processing</a></li><li><a href="#pagetoc__4">File Lookup</a></li><li class="withitems"><a href="#pagetoc__5">Sample Wrapper Files</a><ul class="toc toc2"><li><a href="#pagetoc__5_1">_wrapper.rextinc</a></li><li><a href="#pagetoc__5_2">_wrapper.xhtml</a></li></ul></li></ul></div>
+<div class="toc"><ul class="toc toc1"><li><a href="#pagetoc__1">Running Rextile</a></li><li class="withitems"><a href="#pagetoc__2">How .rextile Files Are Processed</a><ul class="toc toc2"><li><a href="#pagetoc__2_1">Textile Processing</a></li><li><a href="#pagetoc__2_2"><span class="caps">XHTML</span> Processing</a></li><li><a href="#pagetoc__2_3"><span class="caps">XHTML</span> Script Node Processing</a></li></ul></li><li><a href="#ooop">Out-of-order Processing</a></li><li><a href="#pagetoc__4">File Lookup</a></li><li class="withitems"><a href="#pagetoc__5">Sample Wrapper Files</a><ul class="toc toc2"><li><a href="#pagetoc__5_1">_wrapper.rextinc</a></li><li><a href="#pagetoc__5_2">_wrapper.xhtmlinc</a></li></ul></li></ul></div>
 
 	<h2><a name="pagetoc__1">Running Rextile</a></h2>
 
@@ -102,7 +102,7 @@
 
 
 	<ul>
-	<li>Look for a file called <code>_wrapper.xhtml</code> (file lookup rules are listed below).</li>
+	<li>Look for a file called <code>_wrapper.xhtmlinc</code> (file lookup rules are listed below).</li>
 	</ul>
 
 
@@ -213,7 +213,7 @@ p=. Footer
 	<p>More typical than this contrived example is putting a script block in the header part where you initialize custom instance variables and <code>require</code> global modules. Those can then be used in script blocks within the pages themselves, and in the <span class="caps">HTML</span> script blocks in <code>_wrapper.xhtml</code>. See the <a href="templates_standard.htm">standard template</a> for a more elaborate example.</p>
 
 
-	<h3><a name="pagetoc__5_2">_wrapper.xhtml</a></h3>
+	<h3><a name="pagetoc__5_2">_wrapper.xhtmlinc</a></h3>
 
 
 	<p>The <span class="caps">XHTML</span> wrapper file, if present, defines the common <span class="caps">XHTML</span> header and footer for every page. Rextile simply uses the wrapper file&#8217;s source and, within it, replaces the sequence <code>CONTENT GOES HERE</code> by the body <span class="caps">XHTML</span> produced for the page. For example:</p>
@@ -238,7 +238,7 @@ CONTENT GOES HERE
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Nov 01, 2006.</p>
+<br />Last updated on Nov 02, 2006.</p>
 
 
         </div>

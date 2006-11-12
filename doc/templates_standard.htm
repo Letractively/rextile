@@ -92,7 +92,7 @@
 	<p>References the standard template:</p>
 
 
-	<pre><code>@template_path = '/path/to/rextile/templates/standard'</code></pre>
+	<pre><code>@template_path = "#{INSTALL_PATH}/templates/standard'</code></pre>
 
 
 	<h3><a name="pagetoc__1_2">_settings.rb</a></h3>
@@ -137,12 +137,12 @@
 
 
 	<ul>
-	<li><code>_header.xhtml</code> (default is <a href="#crumbs">breadcrumbs navigation</a>)</li>
-		<li><code>_footer.xthml</code> (default is file modification date)</li>
+	<li><code>_header.xhtmlinc</code> (default is <a href="#crumbs">breadcrumbs navigation</a>)</li>
+		<li><code>_footer.xthmlinc</code> (default is file modification date)</li>
 	</ul>
 
 
-	<p>This is much better than overriding <code>_wrapper.xhtml</code>, because the latter contains quite a bit of code.</p>
+	<p>This is much better than overriding <code>_wrapper.xhtmlinc</code>, because the latter contains quite a bit of code.</p>
 
 
 	<h2><a name="pagetoc__2">Document and Page Title</a></h2>
@@ -234,7 +234,7 @@ Here goes...
         <div class="footer">
 		
 <p>Copyright &copy; 2006 by Peter Arrenbrecht. All rights reserved.
-<br />Last updated on Nov 01, 2006.</p>
+<br />Last updated on Nov 02, 2006.</p>
 
 
         </div>

@@ -2,11 +2,11 @@ h1. Rextile
 
 <div class="news">
 
+"Rextile 1.3":-relnotes with minor fixes.
+<br/>%(when)Nov 12, 2006%
+
 "Rextile 1.2":-relnotes with @INSTALL_PATH@ and better file names.
 <br/>%(when)Nov 3, 2006%
-
-"Rextile 1.1":-relnotes with fixes and auto-indexing support.
-<br/>%(when)Nov 1, 2006%
 
 </div>
 
@@ -27,9 +27,17 @@ Rextile is open source under a "BSD-style license":LICENSE.html.
 
 h2. Download
 
-"rextile-1.2.zip":http://arrenbrecht.ch/rextile/dist/rextile-1.2.zip
-- Includes source and documentation.
+<% ver=1.3 %>
 
-* "Release Notes":-relnotes
-* "Installation Instructions":install.htm
+<dl>
+
+<dt>"rextile-<%=ver%>.zip":http://arrenbrecht.ch/rextile/pkg/rextile-<%=ver%>.zip
+<br/>"rextile-<%=ver%>.tar.gz":http://arrenbrecht.ch/rextile/pkg/rextile-<%=ver%>.tar.gz
+</dt>
+<dd>Includes source and documentation.</dd>
+
+</dl>
+
+"Release Notes":-relnotes
+<br/>"Installation Instructions":install.htm
 

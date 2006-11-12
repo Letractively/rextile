@@ -22,11 +22,11 @@ class Rextile
   INSTALL_PATH = File.dirname( File.dirname( __FILE__ ))
 
 
-  def initialize()
+  def initialize( site_file = SITE_FILE )
     @template_path = ''
     @processed = {}
     @warnings = 0
-    eval read_file( SITE_FILE )
+    eval read_file( site_file )
     puts 'Using template ' + template_path unless template_path == ''
   end
 
