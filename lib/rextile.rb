@@ -180,8 +180,8 @@ class Rextile
       rc = RexCloth.new( textile )
       html = rc.to_html()
       flag_undefined_deferred_links html 
-      html.gsub! /§§_/, '<%'
-      html.gsub! /_§§/, '%>'
+      html.gsub!( /§§_/, '<%' )
+      html.gsub!( /_§§/, '%>' )
       html = wrap( html, XHTML_WRAPPER_FILE )
       html = process_includes( html )
       @html_doc = parse_into_dom( html )
@@ -252,7 +252,26 @@ class Rextile
   class RexCloth < RedCloth
   
     QTAGS.reject! {|hc, ht, re, rtype| hc == '-' or hc == '+' }
-  
+
+    def textile_dt( tag, atts, cite, content )
+      r = ''
+      s = content
+      while (p = (s =~ /\s\:/m))
+        d = s.slice( 0, p )
+        s = s.slice( p + 2, s.length )
+        r << '<dt>' << d.strip << '</dt>'
+      end
+      "<dl>\n" << r << '<dd>' << s.strip << "</dd>\n</dl>"
+    end
+    
+    def to_html
+      merge_dls super()
+    end
+    
+    def merge_dls( html )
+      html.gsub( /<\/dl>(\s|\n)*<dl>/, '' )
+    end
+    
   end
 
   

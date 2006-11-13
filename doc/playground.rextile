@@ -1,19 +1,41 @@
-h1. RedCloth Features
+h1. Rextile Markup Features
 
 
-	h3. Bulleted List
+h2. Rextile Features
+
+These are features that Rextile adds to Textile/Markdown.
+
+h3. Definition Lists
+
+Plain text here.
+
+dt. First Item <br/> Second Item :
+	Text of the definition. Next sentence of the definition.
+
+dt. Third Item :
+	Text of the definition.
+
+Normal text again.
+
+
+h2. RedCloth Features
+
+Here's a selection of RedCloth's Textile and Markdown support.
+
+
+h3. Bulleted List
 
 	* One
 	* Two
 	* Three
 	
-	h3. Spaced Bulleted List
+h3. Spaced Bulleted List
 
 	* This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.
 
 	* This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence. This is a sentence.
 
-	h3. Code Blocks
+h3. Code Blocks
 
 A small code block:
 
@@ -24,14 +46,15 @@ A small code block:
 	
 Now for some more text.
 
-<pre><code>	A code block with empty lines.
+<pre><code
+>	A code block with empty lines.
 	
 	Here we go.
 </code></pre>
 
 Is is normal with HTML, we have to put the first line right behind the opening @pre@ and @code@ tags. What a totally ridiculous convention.
 
-	h3. Spans
+h3. Spans
 	
 This is some text where %(when)a part is smaller%.
 
