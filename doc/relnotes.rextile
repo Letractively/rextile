@@ -3,6 +3,16 @@ h1. Release Notes
 
 <%= toc %>
 
+h2. Rextile 1.4
+
+h5. New
+
+	* Support for @dt.@ added. Formats definition lists. Use like this: @dt. term : text@.
+
+h5. Better
+
+	* Returns exit code 1 if warnings occurred.
+
 
 h2.  Rextile 1.3
 
