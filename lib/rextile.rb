@@ -71,7 +71,12 @@ class Rextile
   end
   
   def recap_warnings()
-    puts "\n#{@warnings} warning(s)" if @warnings > 0
+    if @warnings > 0
+      puts "\n#{@warnings} warning(s)"
+      1
+    else
+      0
+    end
   end
 
 
