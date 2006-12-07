@@ -90,7 +90,7 @@ class Rextile
       @rextile = rextile
       @rextile_name = name
       @html_name = name.chomp( REXTILE_EXT ) + XHTML_EXT
-      @root_path = rootOf( name )
+      @root_path = root_of( name )
       @html_doc = nil
       @html_script_node = nil
     end
@@ -103,7 +103,7 @@ class Rextile
       rextile = wrap( read_file( rextile_name ), REXTILE_WRAPPER_FILE )
       textile = to_textile( rextile )
       html = to_html( textile )
-      html = run_rscripts_nodes( html )
+      html = run_rscript_nodes( html )
       write_file( @html_name, html )
     end
 
@@ -155,7 +155,7 @@ class Rextile
       if wrapper == '' then content else wrapper.sub( CONTENT_MARKER_REGEX, content ) end
     end
 
-    def rootOf( path )
+    def root_of( path )
       root = ''
       while true
         path, last = File.split( path )
@@ -203,7 +203,7 @@ class Rextile
     end
 
     # Runs all nodes of the form <span class="rscript">...</span> as Ruby scripts with access to their own location.
-    def run_rscripts_nodes( html )
+    def run_rscript_nodes( html )
       @html_doc = make_dom( html )
       html_doc.search( XHTML_SCRIPT_SEL ).each do |node|
         @html_script_node = node
