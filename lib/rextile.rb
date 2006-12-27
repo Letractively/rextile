@@ -196,7 +196,7 @@ class Rextile
     # Issues warnings for all undefined deferred links. This relies on you using the format
     # "text":-abbr for links with deferred targets.
     def flag_undefined_deferred_links( html )
-      html.gsub( /<a href=\"\-.+\">/i ) do |match|
+      html.gsub( /<a href="-[^"]+">/i ) do |match|
         warn "Undefined deferred link #{match}."
         match
       end
