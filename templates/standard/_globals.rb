@@ -5,7 +5,7 @@
 #
 def text_only( node )
 	txt = ''
-	node.traverse_text{ |tn| txt << tn.content }
+	node.traverse_text{ |tn| txt << tn.content } unless node == nil
 	txt
 end
 
