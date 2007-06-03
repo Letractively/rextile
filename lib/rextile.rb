@@ -257,6 +257,11 @@ class Rextile
   class RexCloth < RedCloth
   
     QTAGS.reject! {|hc, ht, re, rtype| hc == '-' or hc == '+' }
+    
+    # The :block_markdown_rule rule interferes with --- style markers in indented
+    # code blocks.
+    DEFAULT_RULES.reject! {|s| s == :markdown }
+    DEFAULT_RULES << :block_markdown_lists
 
     def textile_dt( tag, atts, cite, content )
       r = ''
