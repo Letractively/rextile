@@ -3,6 +3,20 @@ h1. Release Notes
 
 <%= toc %>
 
+
+h2. Rextile 1.5
+
+h5. Better
+
+	* Dropped all markdown rules except for the list style. The problem was that other markdown elements interfered with recognition of indented code blocks.
+	* Removed dependency on RubyGems as suggested by the Debian maintainers.
+
+h5. Fixed
+
+	* Crash when an XML tree node was @nil@.
+	* The @:-@ style link checker now reports missing link definitions more properly. 
+
+
 h2. Rextile 1.4
 
 h5. New
