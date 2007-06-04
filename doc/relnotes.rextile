@@ -10,6 +10,7 @@ h5. Better
 
 	* Dropped all markdown rules except for the list style. The problem was that other markdown elements interfered with recognition of indented code blocks.
 	* Removed dependency on RubyGems as suggested by the Debian maintainers.
+    * Option to add breadcrumbs not pointing to index.htm.
 
 h5. Fixed
 

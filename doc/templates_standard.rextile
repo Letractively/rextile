@@ -88,6 +88,8 @@ h2. <a name="crumbs">Breadcrumbs Navigation</a>
 
 @_wrapper.xhtml@ automatically adds breadcrumbs navigation to the header of every page (unless you change this by overriding @_header.xhtml@). The crumbs always point back to @index.htm@ of the current folder (unless the current page is @index.htm@), and then to all of the @index.htm@ of the outer folders. The captions used for the crumbs are added to the array @@crumbs@ in @_settings.rb@ for each folder.
 
+If you add a two-element array to @@crumbs@ instead of a single string, the first element of the two-element array is used as the crumb target, the second as the caption.
+
 The breadcrumbs are built using the method @breadcrumbs()@ defined in @_globals.rb@ in the standard template.
 
 

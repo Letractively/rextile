@@ -24,10 +24,17 @@ def breadcrumbs( separator )
   if n > 0
     i = n - 1
     while i >= 0
-      lk = '<a href="' + pre + 'index.htm">' + @crumbs[ i ] + '</a>'
+      crumb = @crumbs[ i ]
+      if crumb.kind_of?( Array )
+        target = crumb[ 1 ]
+        crumb = crumb[ 0 ]
+      else
+        target = pre + 'index.htm'
+        pre += '../'
+      end
+      lk = '<a href="' + target + '">' + crumb + '</a>'
       lk += separator unless res == ''
       res = lk + res
-      pre += '../'
       i -= 1
     end
   end
