@@ -4,6 +4,7 @@ require 'redcloth'
 require 'hpricot'
 require 'hpricot/traverse'
 require 'forwardable'
+require 'fileutils'
 
 # Rextile, a Ruby clone of Xilize.
 class Rextile
