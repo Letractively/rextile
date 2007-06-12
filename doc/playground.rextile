@@ -9,11 +9,12 @@ h3. Definition Lists
 
 Plain text here.
 
-dt. First Item <br/> Second Item :
-	Text of the definition. Next sentence of the definition.
+dt. First Item <br/> Second Item : Text of the definition. Next sentence of the definition.
 
-dt. Third Item :
-	Text of the definition.
+dt. Third Item : Text of the definition.
+	
+	- Test := bla bla.
+	- Other := blu blu.
 
 Normal text again.
 

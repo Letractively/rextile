@@ -6,6 +6,7 @@ require 'hpricot/traverse'
 require 'forwardable'
 require 'fileutils'
 
+
 # Rextile, a Ruby clone of Xilize.
 class Rextile
 
@@ -270,9 +271,17 @@ class Rextile
       while (p = (s =~ /\s\:/m))
         d = s.slice( 0, p )
         s = s.slice( p + 2, s.length )
-        r << '<dt>' << d.strip << '</dt>'
+        r << "<dt#{ atts }>" << d.strip << '</dt>'
       end
       "<dl>\n" << r << '<dd>' << s.strip << "</dd>\n</dl>"
+    end
+
+    def textile_pre_process(text)
+      text.gsub!( BACKTICK_CODE_RE ) do |m|
+          before,lang,code,after = $~[1..4]
+          lang = " lang=\"#{ lang }\"" if lang
+          rip_offtags( "#{ before }<pre><code#{ lang }>#{ code.gsub(/\\\`\`\`/,'```') }</code></pre>#{ after }" )
+      end
     end
     
     def to_html
