@@ -1,13 +1,13 @@
 # Make file
 
-VERSION = '1.5'
+VERSION = '1.5.1'
 
 require 'rake/packagetask'
 
 task :docs do
 	require File.join( File.dirname( __FILE__ ), 'lib/rextile' )
 	cd "doc" do 
-	  Rextile.new.glob
+        Rextile.new.glob
 	end
 	cd "sample" do
 		Rextile.new.glob

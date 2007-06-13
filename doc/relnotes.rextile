@@ -3,6 +3,13 @@ h1. Release Notes
 
 <%= toc %>
 
+h2. Rextile 1.5.1
+
+h5. Fixed
+
+    * Fixed handling of @dt.@ tags. It got broken by the latest RedCloth release.
+    * @require 'fileutils'@ so it runs properly on Debian without gems.
+
 
 h2. Rextile 1.5
 
