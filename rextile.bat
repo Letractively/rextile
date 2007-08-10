@@ -12,7 +12,7 @@ Gem.manage_gems
 
 require File.join( File.dirname( __FILE__ ), 'lib/rextile' )
 
-exit Rextile.new.glob
+exit Rextile.new.processGlob
 
 __END__
 :endofruby

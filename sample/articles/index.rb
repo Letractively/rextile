@@ -4,7 +4,7 @@
 def index_all_except( all_like, except_like )
   index = []
   dir = File.dirname @rextile_name
-  paths = Dir.glob( File.join( dir, '*.rextile' ) )
+  paths = glob( File.join( dir, '*.rextile' ) )
   paths = paths.find_all {|path| path =~ all_like }.reject {|path| path =~ except_like }
   files = paths.map {|path| File.new(path) }
   files = files.sort_by {|file| file.mtime }.reverse

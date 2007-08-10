@@ -89,6 +89,21 @@ There are two other, related methods, that concatenate all of the files, rather 
 The "standard template":-std uses the former to read @_settings.rb@. This means that inner settings are evaluated last and thus have precendence.
 
 
+h2. Dependency Checking
+
+Largish sites can take quite a while to build. To speed up the repeated rebuilds while you're developing content, you can make Rextile keep track of which files need to be regenerated. To enable this, add to your @_site.rb@ a line like the following:
+
+<pre><code
+>@dependency_info = '/path/to/rextile.deps'
+</code></pre>
+
+Rextile will then store information on what files depend on which other file versions in that file and only rebuild out-of-date files on subsequent runs.
+
+h5. Accessing External Files
+
+To enable dependency checking, you have to make sure that you read external files used by your inlined scripts using the file-reading functions provided by Rextile as described above. To build folder indices, use @glob( pattern )@ and @read_file( name )@, again as provided by Rextile.
+   
+
 h2. Sample Wrapper Files
 
 h3. _wrapper.rextinc

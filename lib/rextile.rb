@@ -4,6 +4,7 @@ require 'hpricot'
 require 'hpricot/traverse'
 require 'forwardable'
 require 'fileutils'
+require 'yaml'
 
 
 # Rextile, a Ruby clone of Xilize.
@@ -25,37 +26,64 @@ class Rextile
 
   def initialize( site_file = SITE_FILE )
     @template_path = ''
+	@dependency_info = ''
+    @old_dependencies = {}
+    @new_dependencies = {}
     @processed = {}
     @warnings = 0
     eval read_file( site_file )
     puts 'Using template ' + template_path unless template_path == ''
+    puts 'Keeping dependency info in ' + dependency_info unless dependency_info == ''
   end
 
-  attr_reader :template_path
+  attr_reader :template_path, :dependency_info
 
   # Processes all files in the current directory matching the given glob spec.
   # Default is to process all files in the current directory and its subdirectories.
-  def glob( pattern = '**/*' + REXTILE_EXT )
+  def processGlob( pattern = '**/*' + REXTILE_EXT )
     processAll Dir.glob( pattern )
   end
 
   # Processes all files in the list.
   def processAll( files )
+    load_dependency_info()
     files.each {|file| process file }
+    save_dependency_info()
     recap_warnings
   end
 
   # Processes the single, named file.
   def process( file )
     if not @processed[ file ]
-      puts '> ' + file
       @processed[ file ] = true
-      Processor.new( self, file ).run
+      if @dependency_info == ''
+        reprocess( file )
+      else
+        puts '. ' + file
+        parent_deps = @file_deps
+        own_deps = @old_dependencies[ file ]
+        if !own_deps || is_out_of_date( own_deps )
+            @file_deps = []
+            reprocess( file )
+            own_deps = @file_deps.uniq()
+        end
+        @new_dependencies[ file ] = own_deps
+        parent_deps += own_deps unless parent_deps == nil # parent depends on mine too
+        @file_deps = parent_deps
+      end
     end
+  end
+  
+  def reprocess( file )
+    puts '> ' + file
+    Processor.new( self, file ).run()
   end
 
   def read_file( path )
-    File.open( path, "r" ) {|file| file.read }
+    File.open( path, "r" ) do|file|
+      @file_deps << [path, file.mtime] unless @file_deps == nil
+      file.read
+    end
   end
 
   def write_file( path, content ) 
@@ -64,6 +92,13 @@ class Rextile
       puts "  -> " + path
       File.open( path, "w" ) {|file| file.write content }
     end
+    File.open( path, "r" ) {|file| @file_deps << [path, file.mtime] } unless @file_deps == nil
+  end
+  
+  def glob( spec )
+    res = Dir.glob( spec )
+    @file_deps << [spec, res] unless @file_deps == nil
+    res
   end
   
   def warn( msg )
@@ -79,8 +114,36 @@ class Rextile
       0
     end
   end
+  
+  def load_dependency_info()
+    if @dependency_info != '' && File.exists?( @dependency_info )
+      File.open( @dependency_info ) { |yf| @old_dependencies = YAML::load( yf ) }
+    end
+  end
+  
+  def save_dependency_info()
+    if @dependency_info != ''
+      FileUtils.mkpath File.dirname( @dependency_info )
+      write_file @dependency_info, @new_dependencies.to_yaml
+    end
+  end
 
+  def is_out_of_date( deps )
+    deps.each do |name, mtime|
+      if mtime.is_a?( Array )
+        if Dir.glob( name ).to_s != mtime.to_s
+          puts "  ! #{name} is out of date"
+          return true
+        end
+      elsif !File.exists?( name ) || File.open( name ) {|f| f.mtime != mtime }
+        puts "  ! #{name} is out of date"
+        return true
+      end
+    end
+    return false
+  end
 
+  
   # Helper class that processes single files.
   class Processor
     extend Forwardable
@@ -94,6 +157,7 @@ class Rextile
       @root_path = root_of( name )
       @html_doc = nil
       @html_script_node = nil
+      @dependencies = nil
     end
 
     # Attributes visible to scripts.
@@ -106,6 +170,7 @@ class Rextile
       html = to_html( textile )
       html = run_rscript_nodes( html )
       write_file( @html_name, html )
+      @dependencies
     end
 
     def read_closest_file( name )
@@ -166,7 +231,7 @@ class Rextile
       root
     end
     
-    def_delegators :@rextile, :template_path, :read_file, :write_file, :process, :warn
+    def_delegators :@rextile, :template_path, :read_file, :write_file, :glob, :process, :warn
 
   private
 
@@ -176,8 +241,8 @@ class Rextile
       # write_file( @rextile_name + '.~textile.erb', rextile ) if rextile_name == 'index.rextile'
 
       textile = erb( rextile )
-      textile.gsub!( /<§/, '§§_' )
-      textile.gsub!( /§>/, '_§§' )
+      textile.gsub!( /<ï¿½/, 'ï¿½ï¿½_' )
+      textile.gsub!( /ï¿½>/, '_ï¿½ï¿½' )
       textile
     end
 
@@ -186,8 +251,8 @@ class Rextile
       rc = RexCloth.new( textile )
       html = rc.to_html()
       flag_undefined_deferred_links html 
-      html.gsub!( /§§_/, '<%' )
-      html.gsub!( /_§§/, '%>' )
+      html.gsub!( /ï¿½ï¿½_/, '<%' )
+      html.gsub!( /_ï¿½ï¿½/, '%>' )
       html = wrap( html, XHTML_WRAPPER_FILE )
       html = process_includes( html )
       @html_doc = parse_into_dom( html )

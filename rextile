@@ -4,4 +4,4 @@ $:.unshift(File.join( File.expand_path( File.dirname( __FILE__ )), 'lib' ))
 
 require 'rextile'
 
-exit Rextile.new.glob
+exit Rextile.new.processGlob

@@ -3,6 +3,13 @@ h1. Release Notes
 
 <%= toc %>
 
+
+h2. Rextile 1.6
+h5. New
+
+    * Can set @dependency_info@ instance variable in @_site.rb@ to activate make-style dependency checking to speed up building of large sites.
+
+
 h2. Rextile 1.5.1
 
 h5. Fixed
