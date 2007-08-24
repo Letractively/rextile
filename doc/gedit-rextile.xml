@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<gconf>
+        <entry name="dt@46@" mtime="1186679000" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/1/0/0/0</stringvalue>
+        </entry>
+        <entry name="pre@32@code" mtime="1186678655" type="string">
+                <stringvalue>2/#4c634c634c63/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="italic" mtime="1186678626" type="string">
+                <stringvalue>0/#000000000000/#000000000000/1/0/0/0</stringvalue>
+        </entry>
+        <entry name="indented" mtime="1186678084" type="string">
+                <stringvalue>1/#000000000000/#fdc2fe32e05b/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="XML@32@node" mtime="1186678032" type="string">
+                <stringvalue>2/#ffff8fbe0000/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="list@32@bullet" mtime="1186677959" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="string" mtime="1186677955" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="XML-Node" mtime="1186677703" type="string">
+                <stringvalue>1/#000000000000/#98d4e80ee188/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="@60@@37@@46@@46@@46@@37@@62@" mtime="1186678013" type="string">
+                <stringvalue>2/#000064640000/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="String" mtime="1186677548" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="link:" mtime="1186676487" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="@64@@46@@46@@46@@64@" mtime="1186676382" type="string">
+                <stringvalue>2/#0d830ccd871c/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="h4@46@h5@46@" mtime="1186676210" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="h3" mtime="1186676134" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/0/0/0</stringvalue>
+        </entry>
+        <entry name="h1@46@h2@46@" mtime="1186676125" type="string">
+                <stringvalue>2/#a5a52a2a2a2a/#000000000000/0/1/0/0</stringvalue>
+        </entry>
+        <entry name="h1@46@" mtime="1186675628" type="string">
+                <stringvalue>2/#7a1205ed05ed/#000000000000/0/1/1/0</stringvalue>
+        </entry>
+</gconf>

@@ -8,6 +8,17 @@ A good trick is to set @h1.@ and @h2.@ and so forth to start line comments. Then
 <%= toc %>
 
 
+h2. gedit
+
+"gedit":-ged is the default text editor for Gnome and can be configured well for Rextile documents. Just save "this file":gedit-rextile.xml as
+
+<pre><code
+>~/.gconf/apps/gedit-2/preferences/syntax_highlighting/Rextile/%gconf.xml
+</code></pre>
+
+and then choose "View -> Highlight Mode -> Markup -> Rextile".
+
+
 h2. Notepad++
 
 "Notepad++":-npp is an open-source editor for Windows which can be configured rather nicely for Textile documents. Just add something like the following to your @userDefineLang.xml@, and then tweak it until you like it:
@@ -55,5 +66,6 @@ h2. JEdit
 "JEdit":-jed is another open-source editor, written in Java. "Xilize":-xil -- which inspired Rextile -- comes with a plugin for JEdit that adds syntax highlighting. It can be used for Rextile documents as well.
 
 
+[-ged]http://www.gnome.org/projects/gedit/
 [-npp]http://notepad-plus.sourceforge.net/uk/site.htm
 [-jed]http://www.jedit.org/
