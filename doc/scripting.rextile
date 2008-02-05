@@ -16,5 +16,5 @@ You can also emit script nodes into the XHTML. These are processed at the very e
 end
 </pre>
 
-The script node calls another, deferred function, which can then access the DOM. See the @xtoc()@function in @templates/standard/_globals.rb@ for a complete example.
+The script node calls another, deferred function, which can then access the DOM. See the @xtoc()@ function in @templates/standard/_globals.rb@ for a complete example.
 
