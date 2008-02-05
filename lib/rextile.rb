@@ -26,7 +26,7 @@ class Rextile
 
   def initialize( site_file = SITE_FILE )
     @template_path = ''
-	@dependency_info = ''
+    @dependency_info = ''
     @old_dependencies = {}
     @new_dependencies = {}
     @processed = {}
