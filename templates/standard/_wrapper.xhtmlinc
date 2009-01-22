@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <%= @xhtml_header %>
 <%
 	@page_title ||= text_only( html_doc%:h1 )
 %>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><%= @page_title %></title>
     <style type="text/css" media="screen">
 		<%= @styles %>
