@@ -4,8 +4,10 @@ VERSION = '1.6'
 
 require 'rake/packagetask'
 
+$:.unshift(File.join( File.expand_path( File.dirname( __FILE__ )), 'lib' ))
+
 task :docs do
-	require File.join( File.dirname( __FILE__ ), 'lib/rextile' )
+	require 'rextile'
 	cd "doc" do 
 	  Rextile.new.processGlob
 	end

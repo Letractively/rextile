@@ -10,7 +10,9 @@ exit /b %errorlevel%
 require 'rubygems'
 Gem.manage_gems
 
-require File.join( File.dirname( __FILE__ ), 'lib/rextile' )
+$:.unshift(File.join( File.expand_path( File.dirname( __FILE__ )), 'lib' ))
+
+require 'rextile'
 
 exit Rextile.new.processGlob
 
