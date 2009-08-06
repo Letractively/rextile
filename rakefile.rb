@@ -25,6 +25,7 @@ Rake::PackageTask.new( 'rextile', VERSION ) do |p|
 	p.package_files.include "sample/**/*"
 	p.package_files.include "templates/**/*"
 	p.package_files.include "lib/**/*.rb"
+	p.package_files.include "lib/**/*-copyright"
 	p.package_files.include "rextile*"
 	p.package_files.include "rakefile.rb"
 	p.package_files.include ".buildpath"
