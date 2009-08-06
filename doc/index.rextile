@@ -2,11 +2,11 @@ h1. Rextile
 
 <div class="news">
 
+"Rextile 1.7":-relnotes with fixes to templates and the Windows install.
+<br/>%(when)August 6, 2009%
+
 "Rextile 1.6":-relnotes with make-style dependency checking.
 <br/>%(when)August 24, 2007%
-
-"Rextile 1.5.1":-relnotes with fixes for Debian and @dt.@ tag.
-<br/>%(when)June 13, 2007%
 
 </div>
 
@@ -27,7 +27,7 @@ Rextile is open source under a "BSD-style license":LICENSE.html.
 
 h2. Download
 
-<% ver='1.6' %>
+<% ver='1.7' %>
 
 <dl>
 

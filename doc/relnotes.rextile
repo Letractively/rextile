@@ -4,6 +4,18 @@ h1. Release Notes
 <%= toc %>
 
 
+h2. Rextile 1.7
+
+h5. Better
+
+	* Default template is now in UTF-8.
+	* Rextile now includes its own local copy of RedCloth 3.0.99, as the gem repository seems to only have 4.x versions. This simplifies installation of Windows significantly.
+
+h5. Fixed
+
+	* Windows start script fixed.
+
+
 h2. Rextile 1.6
 
 h5. New
