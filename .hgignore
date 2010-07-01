@@ -2,5 +2,6 @@ syntax: glob
 .svn
 pkg
 *.htm
+*.xhtml
 *.deps
 

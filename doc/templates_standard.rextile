@@ -1,3 +1,5 @@
+<% @html_name = html_name.chomp( '.htm' ) + '.xhtml' %>
+
 h1. Standard Template
 
 The standard template comes with Rextile. It is located in @templates/standard@ in the folder where you installed Rextile. It defines specialized @_wrapper.rextinc@ and @_wrapper.xhtml@ files, and a number of auxiliary files which make site administration easier. The standard template is a good example of how to use Rextile.
@@ -128,6 +130,17 @@ h4. Second
 Final text here.
 
 
+h2. Graphviz
+
+Rextile comes with a script that renders embedded "graphviz":-graphviz source to SVG in the final HTML output. Example:
+
+	<%%= dot(" a -> b -> c ") %>
+
+Renders as:
+
+	<%= dot(" a -> b -> c ") %>
+
+
 h2. Adding Custom Scripts
 
 You may also want to add your own script functions for use in "script blocks":scripting.htm. I suggest you put the following into your root folder's @_settings.rb@ file:
@@ -135,4 +148,7 @@ You may also want to add your own script functions for use in "script blocks":sc
 	require '_funcs.rb'
 	
 and then add your functions to @_funcs.rb@.
+
+
+[-graphviz]http://www.graphviz.org/
 

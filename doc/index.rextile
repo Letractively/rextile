@@ -13,7 +13,7 @@ h1. Rextile
 Build XHTML documents and entire web sites with ease. Write text using "Textile":-tex -- a format much more concise than XHTML. Automate document parts with "Ruby":-rb scripting. Generate site offline -- server gets static XHTML.
 
 * "Usage":usage.htm
-* "Standard Template":templates_standard.htm
+* "Standard Template":-std
 * "Scripting":scripting.htm
 * "Editing":editing.htm
 

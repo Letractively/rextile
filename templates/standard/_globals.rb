@@ -1,5 +1,7 @@
 # Global utility functions for Rextile's standard template.
 
+require 'cgi'
+
 
 # Returns only the pure text content of the given node.
 #
@@ -163,3 +165,24 @@ def list_of_subs_of( node, stop_tags, want_tag )
   hs
 end
 
+
+# Renders embedded graphviz graph to SVG.
+#
+def dot(g)
+  "<pre class=\"rscript\">xdot '#{g}'</pre>"
+end
+
+def xdot(g)
+  g = CGI.unescapeHTML(g)
+  if not g =~ /^digraph /
+    g = "digraph G { " + g + " }"
+  end
+  s = IO.popen("dot -Tsvg", mode="r+") { |d| d.puts(g); d.close_write; d.readlines }
+  e = []
+  started = false
+  s.each do |l|
+    started = true if l =~ /^<svg /
+    e << l if started
+  end
+  e.join("\n")
+end
