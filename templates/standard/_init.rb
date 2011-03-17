@@ -13,7 +13,7 @@
 # Use "@rootcrumb = '<a href="http://my.extroot.org/">External Root</a>'" to define a root crumb which is not built automatically.
 @rootcrumb = nil
 
-# Use "<% @style << '...' %>" in documents to add custom style definitions to <head><style>.
+# Use "<% @styles << '...' %>" in documents to add custom style definitions to <head><style>.
 @styles = []
 
 # Use "<% @body_attrs << '...' %>" in documents to add custom attributes to the <body> tag.

@@ -15,7 +15,7 @@
 <body <%= @body_attrs %> >
     <div class="all">
 		<div class="header">
-		
+
 <%i read_closest_file( '_header.xhtmlinc' ) %>
 
 		</div>
@@ -25,7 +25,7 @@ CONTENT GOES HERE
 
 		</div>
         <div class="footer">
-		
+
 <%i read_closest_file( '_footer.xhtmlinc' ) %>
 
         </div>
