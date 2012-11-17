@@ -4,7 +4,7 @@ You can embed Ruby script blocks in Rextile documents (using "erb":-erb). Simply
 
 Script blocks within the XHTML wrapper can access the "Hpricot":-hpricot DOM of the XHTML document -- as built so far -- in @html_doc@. This DOM is read only. But you can, for example, query it using @REXML::XPath@ to build a table of contents.
 
-If you want to defer a script block within the Rextile source until the XHTML processing phase - to get at the DOM, for example - you have replace the @%@ with a @ง@ in the script block delimiters.
+If you want to defer a script block within the Rextile source until the XHTML processing phase - to get at the DOM, for example - you have replace the @%@ with a @ยง@ in the script block delimiters.
 
 
 h2. Script Nodes

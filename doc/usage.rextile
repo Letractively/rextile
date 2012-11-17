@@ -39,7 +39,7 @@ h3. Textile Processing
 	
 h3. XHTML Processing
 
-	* In the string @html@, convert all <@ง...ง@> sequences to @<%%...%>@ sequences.
+	* In the string @html@, convert all <@ยง...ยง@> sequences to @<%%...%>@ sequences.
 
 	* Look for a file called @_wrapper.xhtmlinc@ (file lookup rules are listed below).
 	
