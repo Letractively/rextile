@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'erb'
 require 'redcloth'
 require 'hpricot'
@@ -241,8 +242,8 @@ class Rextile
       # write_file( @rextile_name + '.~textile.erb', rextile ) if rextile_name == 'index.rextile'
 
       textile = erb( rextile )
-      textile.gsub!( /<�/, '��_' )
-      textile.gsub!( /�>/, '_��' )
+      textile.gsub!( /<§/, '§§_' )
+      textile.gsub!( /§>/, '_§§' )
       textile
     end
 
@@ -251,8 +252,8 @@ class Rextile
       rc = RexCloth.new( textile )
       html = rc.to_html()
       flag_undefined_deferred_links html 
-      html.gsub!( /��_/, '<%' )
-      html.gsub!( /_��/, '%>' )
+      html.gsub!( /§§_/, '<%' )
+      html.gsub!( /_§§/, '%>' )
       html = wrap( html, XHTML_WRAPPER_FILE )
       html = process_includes( html )
       @html_doc = parse_into_dom( html )
