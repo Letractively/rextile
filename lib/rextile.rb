@@ -15,7 +15,7 @@ class Rextile
 
   REXTILE_EXT = '.rextile'
   REXTILE_WRAPPER_FILE = '_wrapper.rextinc'
-  
+
   XHTML_EXT = '.htm'
   XHTML_WRAPPER_FILE = '_wrapper.xhtmlinc'
   XHTML_SCRIPT_SEL = 'pre.rscript'
@@ -74,7 +74,7 @@ class Rextile
       end
     end
   end
-  
+
   def reprocess( file )
     puts '> ' + file
     Processor.new( self, file ).run()
@@ -87,7 +87,7 @@ class Rextile
     end
   end
 
-  def write_file( path, content ) 
+  def write_file( path, content )
     current = if File.exists?( path ) then read_file( path ) else "" end
     unless current == content
       puts "  -> " + path
@@ -95,18 +95,18 @@ class Rextile
     end
     File.open( path, "r" ) {|file| @file_deps << [path, file.mtime] } unless @file_deps == nil
   end
-  
+
   def glob( spec )
     res = Dir.glob( spec )
     @file_deps << [spec, res] unless @file_deps == nil
     res
   end
-  
+
   def warn( msg )
     @warnings += 1
     puts '  WARNING: ' + msg
   end
-  
+
   def recap_warnings()
     if @warnings > 0
       puts "\n#{@warnings} warning(s)"
@@ -115,13 +115,13 @@ class Rextile
       0
     end
   end
-  
+
   def load_dependency_info()
     if @dependency_info != '' && File.exists?( @dependency_info )
       File.open( @dependency_info ) { |yf| @old_dependencies = YAML::load( yf ) }
     end
   end
-  
+
   def save_dependency_info()
     if @dependency_info != ''
       FileUtils.mkpath File.dirname( @dependency_info )
@@ -144,7 +144,7 @@ class Rextile
     return false
   end
 
-  
+
   # Helper class that processes single files.
   class Processor
     extend Forwardable
@@ -231,7 +231,7 @@ class Rextile
       end
       root
     end
-    
+
     def_delegators :@rextile, :template_path, :read_file, :write_file, :glob, :process, :warn
 
   private
@@ -251,7 +251,7 @@ class Rextile
     def to_html( textile )
       rc = RexCloth.new( textile )
       html = rc.to_html()
-      flag_undefined_deferred_links html 
+      flag_undefined_deferred_links html
       html.gsub!( /§§_/, '<%' )
       html.gsub!( /_§§/, '%>' )
       html = wrap( html, XHTML_WRAPPER_FILE )
@@ -259,7 +259,7 @@ class Rextile
       @html_doc = parse_into_dom( html )
       erb( html )
     end
-    
+
     # Issues warnings for all undefined deferred links. This relies on you using the format
     # "text":-abbr for links with deferred targets.
     def flag_undefined_deferred_links( html )
@@ -322,9 +322,9 @@ class Rextile
 
 
   class RexCloth < RedCloth
-  
+
     QTAGS.reject! {|hc, ht, re, rtype| hc == '-' or hc == '+' }
-    
+
     # The :block_markdown_rule rule interferes with --- style markers in indented
     # code blocks.
     DEFAULT_RULES.reject! {|s| s == :markdown }
@@ -348,16 +348,16 @@ class Rextile
           rip_offtags( "#{ before }<pre><code#{ lang }>#{ code.gsub(/\\\`\`\`/,'```') }</code></pre>#{ after }" )
       end
     end
-    
+
     def to_html
       merge_dls super()
     end
-    
+
     def merge_dls( html )
       html.gsub( /<\/dl>(\s|\n)*<dl>/, '' )
     end
-    
+
   end
 
-  
+
 end # class Rextile
