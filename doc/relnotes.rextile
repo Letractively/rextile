@@ -4,6 +4,13 @@ h1. Release Notes
 <%= toc %>
 
 
+h2. Rextile 1.8
+
+h5. Fixed
+
+	* Made compatible with Ruby 1.9: sources flagged as UTF-8 encoded, fixed output of list nodes in standard template, converted documentation to UTF-8.
+
+
 h2. Rextile 1.7
 
 h5. Better
