@@ -7,12 +7,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><%= @page_title %></title>
     <style type="text/css" media="screen">
-		<%= @styles %>
+		<%= @styles.join("\n") %>
     </style>
-	<%= @head_nodes %>
+	<%= @head_nodes.join("\n") %>
 </head>
 
-<body <%= @body_attrs %> >
+<body <%= @body_attrs.join("\n") %> >
     <div class="all">
 		<div class="header">
 
